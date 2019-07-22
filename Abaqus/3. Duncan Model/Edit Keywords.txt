@@ -1,0 +1,4 @@
+*Initial conditions, type=solution
+part-1-1.soil, 0.0, 100.0, 0.0
+
+定义初始条件的关键字行必须出现在第一个分析步定义语句之前

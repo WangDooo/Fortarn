@@ -1,0 +1,9 @@
+        !COMPILER-GENERATED INTERFACE MODULE: Sat Jul 13 19:13:44 2019
+        MODULE WRITETXT__genmod
+          INTERFACE 
+            SUBROUTINE WRITETXT(NAME,VALUE)
+              CHARACTER(LEN=10) :: NAME
+              REAL(KIND=4) :: VALUE
+            END SUBROUTINE WRITETXT
+          END INTERFACE 
+        END MODULE WRITETXT__genmod

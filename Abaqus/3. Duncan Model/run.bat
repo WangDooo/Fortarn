@@ -1,0 +1,1 @@
+call abaqus job=Job-Duncan user=main.obj

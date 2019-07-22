@@ -1,0 +1,1 @@
+call abaqus job=Job-obj-inp user=main.obj
