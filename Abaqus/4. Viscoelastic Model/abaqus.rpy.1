@@ -1,0 +1,91 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2017 replay file
+# Internal Version: 2016_09_28-05.54.59 126836
+# Run by WangDoo on Wed Aug 07 15:46:24 2019
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=286.278656005859, 
+    height=163.320373535156)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(name='Job-Viscoelastic.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/4. Viscoelastic Model/Job-Viscoelastic.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/4. Viscoelastic Model/Job-Viscoelastic.odb']
+session.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E11'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S13'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['S:S13 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.XYPlot('XYPlot-1')
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+del session.xyDataObjects['_temp_1']
+xy1 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['S:S13 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+del session.xyDataObjects['_temp_1']
+xy1 = session.xyDataObjects['S:S13 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+del session.xyDataObjects['_temp_1']
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+xy1 = session.xyDataObjects['S:S13 PI: PART-1-1 E: 1 Centroid']
+c1 = session.Curve(xyData=xy1)
+chart.setValues(curvesToPlot=(c1, ), )
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+xy1 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+c1 = session.Curve(xyData=xy1)
+chart.setValues(curvesToPlot=(c1, ), )
+xy1 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+xy2 = combine(xy1, xy1)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy2)
+chart.setValues(curvesToPlot=(c1, ), )
+xy1 = session.xyDataObjects['E:E11 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['S:S13 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
