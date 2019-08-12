@@ -1,0 +1,1011 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=20.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(1.0, 1.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=10.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].UserDefinedField()
+mdb.models['Model-1'].materials['Material-1'].Elastic(dependencies=1, table=((
+    1e-19, 0.3, 1e-19), (1e+19, 0.3, 1e+19)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
+mdb.models['Model-1'].historyOutputRequests['H-Output-1'].suppress()
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U', 'SDV', 'FV'))
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-1')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-1', region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=0.0, 
+    u2=0.0, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=200.0, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+# Save by WangDoo on 2019_08_12-18.34.30; build 2017 2016_09_28-05.54.59 126836
+# Save by WangDoo on 2019_08_12-18.34.40; build 2017 2016_09_28-05.54.59 126836
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].setValues(userSubroutine=
+    'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 18368, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 18:37:03 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 47764, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 18:38:34 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 12736, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 18:40:24 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 17560, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 18:44:40 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 33152, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 11532, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 20308, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Problem during compilation - D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\E_z.for', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 23768, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 18:54:43 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 17600, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 6616, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 18696, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:13:02 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 33580, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:19:05 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=1.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 22252, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:22:38 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#f ]', ), ), name='Set-2')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-2', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'], u1=0.0, 
+    u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 17396, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:24:19 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].materials['Material-1'].elastic.setValues(table=((1.0, 
+    0.3, 1.0), (1e+19, 0.3, 1e+19)))
+mdb.models['Model-1'].steps['Step-1'].setValues(initialInc=0.1, noStop=OFF, 
+    timeIncrementationMethod=FIXED)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 20632, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:26:02 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 31492, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:33:28 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U', 'FV'))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 6408, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 49288, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:39:51 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].steps['Step-1'].setValues(initialInc=1.0, 
+    timeIncrementationMethod=AUTOMATIC)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 30256, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:44:57 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 30956, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 19:50:40 2019', 
+    'jobName': 'Job-1'})
+# Save by WangDoo on 2019_08_12-19.50.56; build 2017 2016_09_28-05.54.59 126836
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U', 'SDV', 'FV'))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 51772, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'The executable standard.exe aborted with system error code 1073741819. Please check the .dat, .msg, and .sta files for error messages if the files exist.  If there are no error messages and you cannot resolve the problem, please run the command "abaqus job=support information=support" to report and save your system information.  Use the same command to run Abaqus that you used when the problem occurred.  Please contact your local Abaqus support office and send them the input file, the file support.log which you just created, the executable name, and the error code.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].materials['Material-1'].Depvar(n=1)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\4. soil_E_z for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 35388, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 20:29:04 2019', 
+    'jobName': 'Job-1'})
+# Save by WangDoo on 2019_08_12-20.34.50; build 2017 2016_09_28-05.54.59 126836

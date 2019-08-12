@@ -1,6 +1,9 @@
 program main
     implicit none
-   
+    
+    real :: E_now
+    
+    
     !integer :: i
     !do i =1, 20
     !    write(*,*) i, Selected_Int_Kind(i)
@@ -28,4 +31,6 @@ program main
     write(*,*) c
     c(10:) = ""
     write(*,*) c
+    E_now = 10000.0*TAN(38.0/180.0*3.1415)*sqrt(9.5*(10.0-0.0))
+    write(*,*) E_now
 end program main

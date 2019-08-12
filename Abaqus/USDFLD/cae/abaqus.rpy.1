@@ -1,0 +1,45 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2017 replay file
+# Internal Version: 2016_09_28-05.54.59 126836
+# Run by WangDoo on Mon Aug 12 10:56:47 2019
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=286.278656005859, 
+    height=163.320373535156)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(name='Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=INTEGRATION_POINT, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E33'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S33'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 1']
+xy2 = session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 1']
+xy3 = combine(xy1, xy2)
+xyp = session.XYPlot('XYPlot-1')
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)

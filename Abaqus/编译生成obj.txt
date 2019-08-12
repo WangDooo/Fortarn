@@ -1,5 +1,13 @@
- /c /DABQ_WIN86_64 /extend-source /fpp
- /iface:cref /recursive /Qauto-scalar
- /QxSSE3 /QaxAVX 
- /heap-arrays:1 
- /include:%I
+/c /DABQ_WIN86_64 /extend-source /fpp
+/iface:cref /recursive /Qauto-scalar
+/QxSSE3 /QaxAVX 
+/heap-arrays:1 
+/include:%I
+
+
+
+
+
+
+* User Defined Field
+*initial conditions, type=field, variable=1

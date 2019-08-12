@@ -1,0 +1,1426 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=2.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.0, 0.0), 
+    point2=(1.0, 1.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=1.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+# Save by WangDoo on 2019_08_12-10.41.10; build 2017 2016_09_28-05.54.59 126836
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Elastic(dependencies=1, table=((
+    10000.0, 0.3, 1.0), (20000.0, 0.3, 2.0)))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].parts['Part-1'].Set(cells=
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].StaticStep(initialInc=0.1, name='Step-1', noStop=OFF, 
+    previous='Initial', timeIncrementationMethod=FIXED)
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U'))
+mdb.models['Model-1'].historyOutputRequests['H-Output-1'].suppress()
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#2 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=10.0, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+del mdb.models['Model-1'].loads['Load-1']
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-1')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None, name=
+    'BC-1', region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=0.0, 
+    u2=0.0, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=10.0, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-2'])
+mdb.models['Model-1'].parts['Part-1'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['Part-1'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), ))
+mdb.models['Model-1'].parts['Part-1'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['Part-1'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 19052, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 10:47:04 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.setValues(edited=0)
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(25, 
+    '\n** ----------------------------------------------------------------\n*INITIAL CONDITIONS, TYPE=FIELD, VARIABLE=1\n** \n** STEP: Step-1\n**')
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.jobs['Job-1'].setValues(userSubroutine=
+    'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\write.for')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 51596, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:03:39 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, '\n')
+mdb.models['Model-1'].keywordBlock.replace(27, 
+    '\n** \n*INITIAL CONDITIONS, TYPE=FIELD, VARIABLE=1\n** STEP: Step-1\n**')
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 43060, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:06:10 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].StaticStep(name='Step-2', previous='Step-1')
+mdb.models['Model-1'].steps['Step-1'].setValues(timeIncrementationMethod=
+    AUTOMATIC)
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 41900, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 2.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:10:13 2019', 
+    'jobName': 'Job-1'})
+del mdb.models['Model-1'].steps['Step-2']
+# Save by WangDoo on 2019_08_12-11.12.11; build 2017 2016_09_28-05.54.59 126836
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n*User Defined Field\n*depvar\n1,')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 13852, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:15:21 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].steps['Step-1'].setValues(noStop=OFF, 
+    timeIncrementationMethod=FIXED)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 23760, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:19:48 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 37460, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:27:35 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n*initial conditions, type=field, variable=1')
+mdb.models['Model-1'].keywordBlock.replace(27, '\n')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 1536, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:32:12 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n*initial conditions, type=field\n1')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'in keyword *INITIALCONDITIONS, file "Job-1.inp", line 59: Unknown assembly id 1.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n*initial conditions, type=field\nvariable,1')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'in keyword *INITIALCONDITIONS, file "Job-1.inp", line 59: Unknown assembly node set VARIABLE', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'AN INITIAL CONDITION HAS BEEN SPECIFIED ON NODE SET ASSEMBLY_VARIABLE.  THIS NODE SET IS NOT ACTIVE IN THE MODEL.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(25, 
+    '\n** ----------------------------------------------------------------\n** \n* User Defined Field')
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n*initial conditions, type=field, variable=1')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 16872, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 11:35:29 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].materials['Material-1'].UserDefinedField()
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+mdb.models['Model-1'].keywordBlock.replace(26, 
+    '\n** ----------------------------------------------------------------\n**')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 9576, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 14:20:09 2019', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].materials['Material-1'].elastic.setValues(table=((1e-19, 
+    0.3, 1e-19), (1e+19, 0.3, 1e+19)))
+mdb.models['Model-1'].materials['Material-1'].MohrCoulombPlasticity(table=((
+    37.3, 2.9), ))
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.MohrCoulombHardening(
+    table=((0.5, 0.0), ))
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.TensionCutOff(
+    dependencies=0, table=((0.0, 0.0), ), temperatureDependency=OFF)
+mdb.models['Model-1'].steps['Step-1'].setValues(initialInc=0.1, maxNumInc=10000
+    , timePeriod=2.0)
+mdb.models['Model-1'].PeriodicAmplitude(a_0=0.0, data=((0.0, 1.0), ), 
+    frequency=3.1415926, name='Amp-1', start=0.0, timeSpan=STEP)
+del mdb.models['Model-1'].loads['Load-1']
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ))
+mdb.models['Model-1'].SurfaceTraction(amplitude='Amp-1', createStepName=
+    'Step-1', directionVector=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].edges[10], 
+    MIDDLE), 
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].vertices[6]), 
+    distributionType=UNIFORM, field='', localCsys=None, magnitude=0.2, name=
+    'Load-1', region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-3'])
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 9912, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 2})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 
+    'equilibrium': 4})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Fixed time increment is too large', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 4, 'phase': STANDARD_PHASE, 
+    'equilibrium': 4})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 2, 
+    'timeIncrement': 1e-35, 'increment': 6, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'THE ANALYSIS HAS BEEN TERMINATED DUE TO PREVIOUS ERRORS. ALL OUTPUT REQUESTS HAVE BEEN WRITTEN FOR THE LAST CONVERGED INCREMENT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=0.1)
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U', 'FV'))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 18548, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 2})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 11, 'stepTime': 1.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 12, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 12, 'stepTime': 1.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 13, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 13, 'stepTime': 1.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 14, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 14, 'stepTime': 1.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 15, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 15, 'stepTime': 1.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 16, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 16, 'stepTime': 1.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 17, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 17, 'stepTime': 1.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 18, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 18, 'stepTime': 1.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 19, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 19, 'stepTime': 1.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 20, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 2.0, 'attempts': 1, 
+    'timeIncrement': 0.0999999999999994, 'increment': 20, 'stepTime': 2.0, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 15:18:21 2019', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL CAUSE CODE EXECUTION ERRORS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'D:\\Coding\\Github\\Fortarn\\Abaqus\\USDFLD\\2. Test Write txt .for\\cae\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-403292K', 'handle': 1468, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 24.0})
+mdb.jobs['Job-1']._Message(PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 
+    'physical_memory': 16317.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MINIMUM_MEMORY, {'minimum_memory': 17.0, 
+    'phase': STANDARD_PHASE, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 3, 'stepTime': 0.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 4, 'stepTime': 0.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 5, 'stepTime': 0.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 6, 'stepTime': 0.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 7, 'stepTime': 0.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 8, 'stepTime': 0.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 9, 'stepTime': 0.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 10, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 11, 'stepTime': 1.1, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 12, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 12, 'stepTime': 1.2, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 13, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.3, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 13, 'stepTime': 1.3, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 14, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.4, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 14, 'stepTime': 1.4, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 15, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.5, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 15, 'stepTime': 1.5, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 16, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.6, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 16, 'stepTime': 1.6, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 17, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.7, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 17, 'stepTime': 1.7, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 18, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.8, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 18, 'stepTime': 1.8, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 19, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.9, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 19, 'stepTime': 1.9, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 20, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 2.0, 'attempts': 1, 
+    'timeIncrement': 0.0999999999999994, 'increment': 20, 'stepTime': 2.0, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 15:21:22 2019', 
+    'jobName': 'Job-1'})
+# Save by WangDoo on 2019_08_12-16.30.23; build 2017 2016_09_28-05.54.59 126836

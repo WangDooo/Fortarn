@@ -1,0 +1,511 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2017 replay file
+# Internal Version: 2016_09_28-05.54.59 126836
+# Run by WangDoo on Mon Aug 12 11:14:05 2019
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=286.278656005859, 
+    height=163.320373535156)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('test-write.cae')
+#: The model database "D:\Coding\Github\Fortarn\Abaqus\USDFLD\2. Test Write txt .for\cae\test-write.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+#--- Recover file: 'test-write.rec' ---
+# -*- coding: mbcs -*- 
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+#--- End of Recover file ------
+import job
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(26, """
+*User Defined Field
+*depvar
+1,""")
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=INTEGRATION_POINT, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E33'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S33'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 1']
+xy2 = session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 1']
+xy3 = combine(xy1, xy2)
+xyp = session.XYPlot('XYPlot-1')
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.603204, 0, 0, -0.103981, 0, 0.603204, 0, 0.0061763, 0, 0, 
+    0.603204, 0, 0, 0, 0, 1))
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 1']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 2']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 3']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 4']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 5']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 6']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 7']
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 IP: 8']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 1']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 2']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 3']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 4']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 5']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 6']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 7']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 IP: 8']
+del session.xyDataObjects['_temp_1']
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    UNDEFORMED, ))
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E33'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S33'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.538575, 0, 0, -0.0202774, 0, 0.538575, 0, -0.108684, 0, 0, 
+    0.538575, 0, 0, 0, 0, 1))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].steps['Step-1'].setValues(timeIncrementationMethod=FIXED, 
+    noStop=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 Centroid']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 Centroid']
+del session.xyDataObjects['_temp_1']
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E33'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S33'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.394315, 0, 0, 0.101748, 0, 0.394315, 0, 0.0658198, 0, 0, 
+    0.394315, 0, 0, 0, 0, 1))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+del session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 Centroid']
+del session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 Centroid']
+del session.xyDataObjects['_temp_1']
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('E', INTEGRATION_POINT, ((COMPONENT, 'E33'), )), ('S', 
+    INTEGRATION_POINT, ((COMPONENT, 'S33'), )), ), elementPick=(('PART-1-1', 1, 
+    ('[#1 ]', )), ), )
+xy1 = session.xyDataObjects['E:E33 PI: PART-1-1 E: 1 Centroid']
+xy2 = session.xyDataObjects['S:S33 PI: PART-1-1 E: 1 Centroid']
+xy3 = combine(xy1, xy2)
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+c1 = session.Curve(xyData=xy3)
+chart.setValues(curvesToPlot=(c1, ), )
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.56199, 0, 0, -0.121614, 0, 0.56199, 0, -0.136984, 0, 0, 
+    0.56199, 0, 0, 0, 0, 1))
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(26, """
+*initial conditions, type=field, variable=1""")
+mdb.models['Model-1'].keywordBlock.replace(27, """
+""")
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(26, """
+*initial conditions, type=field
+1""")
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Error in job Job-1: in keyword *INITIALCONDITIONS, file "Job-1.inp", line 59: Unknown assembly id 1.
+#: Job Job-1: Analysis Input File Processor aborted due to errors.
+#: Error in job Job-1: Analysis Input File Processor exited with an error.
+#: Job Job-1 aborted due to errors.
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(26, """
+*initial conditions, type=field
+variable,1""")
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Error in job Job-1: in keyword *INITIALCONDITIONS, file "Job-1.inp", line 59: Unknown assembly node set VARIABLE
+#: Error in job Job-1: AN INITIAL CONDITION HAS BEEN SPECIFIED ON NODE SET ASSEMBLY_VARIABLE.  THIS NODE SET IS NOT ACTIVE IN THE MODEL.
+#: Job Job-1: Analysis Input File Processor aborted due to errors.
+#: Error in job Job-1: Analysis Input File Processor exited with an error.
+#: Job Job-1 aborted due to errors.
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(25, """
+** ----------------------------------------------------------------
+**
+* User Defined Field""")
+mdb.models['Model-1'].keywordBlock.replace(26, """
+*initial conditions, type=field, variable=1""")
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].materials['Material-1'].UserDefinedField()
+mdb.models['Model-1'].keywordBlock.synchVersions(storeNodesAndElements=False)
+#: Warning: History output is not requested in the following steps:
+#: Step-1
+mdb.models['Model-1'].keywordBlock.replace(26, """
+** ----------------------------------------------------------------
+**""")
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.63419, 
+    farPlane=4.61429, width=2.95016, height=1.23613, cameraPosition=(0.836531, 
+    1.94181, -2.80825), cameraUpVector=(-0.940002, -0.311929, 0.138189), 
+    cameraTarget=(0.520979, 0.458042, 0.520979))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.54743, 
+    farPlane=4.71056, width=2.853, height=1.19542, cameraPosition=(1.73906, 
+    2.00708, -2.56015), cameraUpVector=(-0.967885, -0.228609, -0.10458), 
+    cameraTarget=(0.512438, 0.457424, 0.518631))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.60995, 
+    farPlane=4.71569, width=2.92303, height=1.22476, cameraPosition=(1.3975, 
+    -2.60726, -1.2193), cameraUpVector=(-0.915563, -0.0859918, 0.392875), 
+    cameraTarget=(0.515218, 0.494987, 0.507716))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.58455, 
+    farPlane=4.76208, width=2.89459, height=1.21284, cameraPosition=(1.63169, 
+    -2.42322, 2.41507), cameraUpVector=(-0.694975, 0.493237, 0.523189), 
+    cameraTarget=(0.515492, 0.495202, 0.511961))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.59738, 
+    farPlane=4.74867, width=2.90896, height=1.21886, cameraPosition=(1.81442, 
+    -2.59502, 1.978), cameraUpVector=(-0.479528, 0.526692, 0.701889), 
+    cameraTarget=(0.516227, 0.494511, 0.510203))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.61335, 
+    farPlane=4.73133, width=2.92685, height=1.22636, cameraPosition=(1.6743, 
+    -2.6872, 1.89608), cameraUpVector=(0.15085, 0.729137, 0.667535), 
+    cameraTarget=(0.515674, 0.494147, 0.50988))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.59489, 
+    farPlane=4.75075, width=2.90618, height=1.2177, cameraPosition=(1.49793, 
+    -2.46944, 2.41739), cameraUpVector=(0.0661962, 0.808886, 0.584227), 
+    cameraTarget=(0.515011, 0.494965, 0.511839))
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].materials['Material-1'].elastic.setValues(table=((1e-19, 
+    0.3, 1e-19), (1e+19, 0.3, 1e+19)))
+mdb.models['Model-1'].materials['Material-1'].MohrCoulombPlasticity(table=((
+    37.3, 2.9), ))
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.MohrCoulombHardening(
+    table=((0.5, 0.0), ))
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.TensionCutOff(
+    temperatureDependency=OFF, dependencies=0, table=((0.0, 0.0), ))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].steps['Step-1'].setValues(timePeriod=2.0, 
+    maxNumInc=10000, initialInc=0.1)
+mdb.models['Model-1'].PeriodicAmplitude(name='Amp-1', timeSpan=STEP, 
+    frequency=3.1415926, start=0.0, a_0=0.0, data=((0.0, 1.0), ))
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+del mdb.models['Model-1'].loads['Load-1']
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+e1 = a.instances['Part-1-1'].edges
+v1 = a.instances['Part-1-1'].vertices
+a = mdb.models['Model-1'].rootAssembly
+s1 = a.instances['Part-1-1'].faces
+side1Faces1 = s1.getSequenceFromMask(mask=('[#10 ]', ), )
+region = a.Surface(side1Faces=side1Faces1, name='Surf-3')
+mdb.models['Model-1'].SurfaceTraction(name='Load-1', createStepName='Step-1', 
+    region=region, magnitude=0.2, amplitude='Amp-1', directionVector=(
+    a.instances['Part-1-1'].InterestingPoint(edge=e1[10], rule=MIDDLE), v1[6]), 
+    distributionType=UNIFORM, field='', localCsys=None)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+mdb.jobs['Job-1'].kill()
+#: Error in job Job-1: Fixed time increment is too large
+#: Error in job Job-1: THE ANALYSIS HAS BEEN TERMINATED DUE TO PREVIOUS ERRORS. ALL OUTPUT REQUESTS HAVE BEEN WRITTEN FOR THE LAST CONVERGED INCREMENT.
+#: Job Job-1: Abaqus/Standard aborted due to errors.
+#: Error in job Job-1: Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.
+#: Job Job-1 aborted due to errors.
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=0.1)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'E', 'U', 'FV'))
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.animationController.setValues(animationType=SCALE_FACTOR, viewports=(
+    'Viewport: 1', ))
+session.animationController.play(duration=UNLIMITED)
+session.animationController.setValues(animationType=NONE)
+session.animationController.setValues(animationType=TIME_HISTORY, viewports=(
+    'Viewport: 1', ))
+session.animationController.play(duration=UNLIMITED)
+session.animationController.setValues(animationType=NONE)
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+xyList = xyPlot.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('FV1', INTEGRATION_POINT), ), elementPick=(('PART-1-1', 1, (
+    '[#1 ]', )), ), )
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+curveList = session.curveSet(xyData=xyList)
+chart.setValues(curvesToPlot=curveList)
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.629429, 0, 0, -0.192849, 0, 0.629429, 0, 0.0184921, 0, 0, 
+    0.629429, 0, 0, 0, 0, 1))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       3
+#: Number of Node Sets:          3
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/2. Test Write txt .for/cae/Job-1.odb']
+xyList = xyPlot.xyDataListFromField(odb=odb, outputPosition=ELEMENT_CENTROID, 
+    variable=(('FV1', INTEGRATION_POINT), ), elementPick=(('PART-1-1', 1, (
+    '[#1 ]', )), ), )
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+curveList = session.curveSet(xyData=xyList)
+chart.setValues(curvesToPlot=curveList)
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+session.xyPlots[session.viewports['Viewport: 1'].displayedObject.name].setValues(
+    transform=(0.792094, 0, 0, -0.100672, 0, 0.792094, 0, 0.0508075, 0, 0, 
+    0.792094, 0, 0, 0, 0, 1))
+mdb.save()
+#: The model database has been saved to "D:\Coding\Github\Fortarn\Abaqus\USDFLD\2. Test Write txt .for\cae\test-write.cae".
