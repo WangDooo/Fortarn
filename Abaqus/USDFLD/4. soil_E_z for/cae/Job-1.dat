@@ -1,6 +1,6 @@
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 12-8月-2019   Time 20:28:56
+   Abaqus 3DEXPERIENCE R2017x                                  Date 13-8月-2019   Time 22:26:34
    For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
 
 
@@ -78,24 +78,57 @@
   *Element, type=C3D8
   *Nset, nset=ASSEMBLY_PART-1-1_SET-1
   *Elset, elset=ASSEMBLY_PART-1-1_SET-1
-  *Nset, nset=ASSEMBLY_SET-1
-  *Nset, nset=ASSEMBLY_SET-2
-  *Elset, elset=ASSEMBLY_SET-1
-  *Elset, elset=ASSEMBLY_SET-2
-  *Elset, elset=ASSEMBLY__SURF-1_S3
-  *material, name=MATERIAL-1
+  *Elset, elset=ASSEMBLY_PART-1-1__SURF-BOTTOM_S3
+  *Node
+  *Element, type=C3D8
+  *Nset, nset=ASSEMBLY_PART-2-1_SET-1
+  *Elset, elset=ASSEMBLY_PART-2-1_SET-1
+  *Elset, elset=ASSEMBLY_PART-2-1__SURF-F_S3
+  *Elset, elset=ASSEMBLY_PART-2-1__SURF-TOP_S5
+  *Nset, nset=ASSEMBLY_SET-3
+  *Nset, nset=ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_SET-3
+  *Elset, elset=ASSEMBLY_SET-4
+  *material, name=MAT1
   *depvar
   *elastic, dependencies=1
   *userdefinedfield
-  *solidsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MATERIAL-1
-  *solidsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MATERIAL-1
-  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
-  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *material, name=MAT2
+  *elastic, dependencies=1
+  *userdefinedfield
+  *solidsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MAT1
+  *solidsection, elset=ASSEMBLY_PART-2-1_SET-1, material=MAT2
+  *solidsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MAT1
+  *solidsection, elset=ASSEMBLY_PART-2-1_SET-1, material=MAT2
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-1-1_SURF-BOTTOM
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-TOP
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-F
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-1-1_SURF-BOTTOM
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-TOP
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-F
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-1-1_SURF-BOTTOM
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-TOP
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-F
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
   *boundary
   *boundary
   *boundary
   *boundary
-  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+
+ ***WARNING: FOR *TIE PAIR 
+             (ASSEMBLY_PART-1-1_SURF-BOTTOM-ASSEMBLY_PART-2-1_SURF-TOP), 
+             ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. 
+             SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-1-1_SURF-BOTTOM
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-TOP
+  *surface, type=ELEMENT, name=ASSEMBLY_PART-2-1_SURF-F
+  *tie, name=ASSEMBLY_CONSTRAINT-1, adjust=YES
   *output, field
   *output, history, frequency=0
   *elementoutput, directions=YES
@@ -119,23 +152,58 @@
   *elementoutput, directions=YES
   *output, history, frequency=0
   *endstep
+
+ ***WARNING: OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE C3D8
   *Step, name=Step-1, nlgeom=NO
   *static
   *boundary
   *boundary
   *endstep
 
+ ***WARNING: THE *USER DEFINED FIELD OPTION HAS BEEN USED WITH THE STAVEV ARRAY 
+             DIMENSIONED TO ZERO SINCE THE *DEPVAR OPTION IS NOT USED WITH THIS 
+             MATERIAL. CONSEQUENTLY, DEFINING STATEV ENTRIES IN USDFLD WILL 
+             CAUSE CODE EXECUTION ERRORS.
+
      - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 1 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 1 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 2 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 2 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 23 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 23 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 24 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 24 INSTANCE PART-1-1 - 
+             THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: Boundary conditions are specified on inactive dof of 4 nodes. The 
+             nodes have been identified in node set WarnNodeBCInactiveDof.
 
 
 
                             P R O B L E M   S I Z E
 
 
-          NUMBER OF ELEMENTS IS                                    10
-          NUMBER OF NODES IS                                       44
-          NUMBER OF NODES DEFINED BY THE USER                      44
-          TOTAL NUMBER OF VARIABLES IN THE MODEL                  132
+          NUMBER OF ELEMENTS IS                                    15
+          NUMBER OF NODES IS                                       68
+          NUMBER OF NODES DEFINED BY THE USER                      68
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  204
           (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
            VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
 
@@ -149,10 +217,10 @@
        USER TIME (SEC)      =   0.0000    
        SYSTEM TIME (SEC)    =   0.0000    
        TOTAL CPU TIME (SEC) =   0.0000    
-       WALLCLOCK TIME (SEC) =          1
+       WALLCLOCK TIME (SEC) =          0
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 12-8月-2019   Time 20:29:00
+   Abaqus 3DEXPERIENCE R2017x                                  Date 13-8月-2019   Time 22:26:37
    For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -165,7 +233,7 @@
                                                                                           
 
      AUTOMATIC TIME CONTROL WITH -
-          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          A SUGGESTED INITIAL TIME INCREMENT OF                0.100    
           AND A TOTAL TIME PERIOD OF                            1.00    
           THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
           THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
@@ -178,7 +246,7 @@
               OPERATIONS           REQUIRED          MINIMIZE I/O
              PER ITERATION           (MB)               (MB)
   
-     1         1.07E+005               17                 24
+     1         2.58E+005               17                 24
   
  NOTE:
       (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
@@ -216,11 +284,12 @@
 
 
                               ANALYSIS COMPLETE
+                              WITH     12 WARNING MESSAGES ON THE DAT FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =   0.0000    
+       USER TIME (SEC)      =  0.10000    
        SYSTEM TIME (SEC)    =  0.10000    
-       TOTAL CPU TIME (SEC) =  0.10000    
-       WALLCLOCK TIME (SEC) =          2
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0

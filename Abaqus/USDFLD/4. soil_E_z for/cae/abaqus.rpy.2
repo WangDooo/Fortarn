@@ -1,0 +1,1049 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2017 replay file
+# Internal Version: 2016_09_28-05.54.59 126836
+# Run by WangDoo on Tue Aug 13 19:14:23 2019
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=240.691146850586, 
+    height=74.8777770996094)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('E_z.cae')
+#: The model database "D:\Coding\Github\Fortarn\Abaqus\USDFLD\4. soil_E_z for\cae\E_z.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+mdb.models['Model-1'].materials.changeKey(fromName='Material-1', toName='Mat1')
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+s = mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=20.0)
+g, v, d, c = s.geometry, s.vertices, s.dimensions, s.constraints
+s.setPrimaryObject(option=STANDALONE)
+s.rectangle(point1=(0.0, 0.0), point2=(1.0, 1.0))
+p = mdb.models['Model-1'].Part(name='Part-2', dimensionality=THREE_D, 
+    type=DEFORMABLE_BODY)
+p = mdb.models['Model-1'].parts['Part-2']
+p.BaseSolidExtrude(sketch=s, depth=5.0)
+s.unsetPrimaryObject()
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+del mdb.models['Model-1'].sketches['__profile__']
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+mdb.models['Model-1'].Material(name='Mat2')
+mdb.models['Model-1'].materials['Mat2'].Elastic(table=((70000.0, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(name='Section-2', 
+    material='Mat2', thickness=None)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.4478, 
+    farPlane=14.3851, width=10.5508, height=4.22085, viewOffsetX=0.62098, 
+    viewOffsetY=0.194636)
+p = mdb.models['Model-1'].parts['Part-2']
+c = p.cells
+cells = c.getSequenceFromMask(mask=('[#1 ]', ), )
+region = p.Set(cells=cells, name='Set-1')
+p = mdb.models['Model-1'].parts['Part-2']
+p.SectionAssignment(region=region, sectionName='Section-2', offset=0.0, 
+    offsetType=MIDDLE_SURFACE, offsetField='', 
+    thicknessAssignment=FROM_SECTION)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+a = mdb.models['Model-1'].rootAssembly
+p = mdb.models['Model-1'].parts['Part-1']
+a.Instance(name='Part-1-2', part=p, dependent=ON)
+p = mdb.models['Model-1'].parts['Part-2']
+a.Instance(name='Part-2-1', part=p, dependent=ON)
+p1 = a.instances['Part-1-2']
+p1.translate(vector=(1.1, 0.0, 0.0))
+p1 = a.instances['Part-2-1']
+p1.translate(vector=(2.2, 0.0, 0.0))
+session.viewports['Viewport: 1'].view.fitView()
+a = mdb.models['Model-1'].rootAssembly
+a.deleteFeatures(('Part-1-1', 'Part-1-2', 'Part-2-1', ))
+a1 = mdb.models['Model-1'].rootAssembly
+p = mdb.models['Model-1'].parts['Part-1']
+a1.Instance(name='Part-1-1', part=p, dependent=ON)
+p = mdb.models['Model-1'].parts['Part-2']
+a1.Instance(name='Part-2-1', part=p, dependent=ON)
+p1 = a1.instances['Part-2-1']
+p1.translate(vector=(1.1, 0.0, 0.0))
+session.viewports['Viewport: 1'].view.fitView()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=17.3837, 
+    farPlane=26.6246, width=11.6951, height=4.67864, cameraPosition=(-1.23597, 
+    18.2294, -7.83309), cameraUpVector=(-0.6898, 0.0340385, 0.7232), 
+    cameraTarget=(0.917737, 0.193355, 5.43891))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.1669, 
+    farPlane=27.6871, width=10.8765, height=4.35116, cameraPosition=(-0.209184, 
+    11.404, -13.9833), cameraUpVector=(-0.691016, 0.360801, 0.626354), 
+    cameraTarget=(0.894773, 0.346007, 5.57646))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=15.7056, 
+    farPlane=28.1484, width=17.5475, height=7.01986, viewOffsetX=-0.2454, 
+    viewOffsetY=0.602651)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=19.2116, 
+    farPlane=25.8404, width=21.4646, height=8.58693, cameraPosition=(4.82104, 
+    22.2814, 0.663584), cameraUpVector=(-0.970784, -0.139636, 0.195143), 
+    cameraTarget=(1.12712, 0.551987, 5.1657), viewOffsetX=-0.300181, 
+    viewOffsetY=0.737182)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.1395, 
+    farPlane=29.2627, width=18.0323, height=7.21382, cameraPosition=(13.5248, 
+    7.90522, 22.4633), cameraUpVector=(-0.801789, 0.586289, -0.115757), 
+    cameraTarget=(1.10663, 0.324992, 5.30492), viewOffsetX=-0.25218, 
+    viewOffsetY=0.619301)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.2195, 
+    farPlane=29.3836, width=18.1216, height=7.24956, cameraPosition=(7.77952, 
+    -9.0403, 24.5944), cameraUpVector=(-0.244457, 0.958608, 0.145987), 
+    cameraTarget=(0.766417, -0.0526855, 5.20056), viewOffsetX=-0.253429, 
+    viewOffsetY=0.622369)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=17.483, 
+    farPlane=28.1989, width=19.5333, height=7.81432, cameraPosition=(1.5462, 
+    -17.3477, 19.2684), cameraUpVector=(0.172654, 0.854237, 0.490377), 
+    cameraTarget=(0.394569, -0.0833888, 4.89129), viewOffsetX=-0.273172, 
+    viewOffsetY=0.670853)
+a1 = mdb.models['Model-1'].rootAssembly
+a1.translate(instanceList=('Part-2-1', ), vector=(-1.1, 0.0, 10.0))
+#: The instance Part-2-1 was translated by -1.1, 0., 10. with respect to the assembly coordinate system
+session.viewports['Viewport: 1'].view.setValues(nearPlane=13.5499, 
+    farPlane=28.993, width=25.1562, height=10.0637, viewOffsetX=2.02806, 
+    viewOffsetY=1.71704)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF, loads=ON, 
+    bcs=ON, predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=7.56142, 
+    farPlane=14.6458, width=9.44378, height=3.77798, cameraPosition=(4.06147, 
+    -3.85946, 12.1025), cameraUpVector=(-0.586254, 0.799409, 0.131343), 
+    cameraTarget=(0.381333, -0.131339, 1.95888), viewOffsetX=0.555824, 
+    viewOffsetY=0.174214)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=9.23897, 
+    farPlane=13.261, width=11.5389, height=4.61615, cameraPosition=(3.32042, 
+    -10.3243, 3.95523), cameraUpVector=(-0.503112, 0.377787, 0.777274), 
+    cameraTarget=(0.334649, 0.45699, 1.6784), viewOffsetX=0.679137, 
+    viewOffsetY=0.212865)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=9.32567, 
+    farPlane=13.8273, width=11.6472, height=4.65947, cameraPosition=(8.55386, 
+    -7.27885, -0.561763), cameraUpVector=(-0.487746, -0.262463, 0.832597), 
+    cameraTarget=(0.388269, 0.389196, 1.64258), viewOffsetX=0.68551, 
+    viewOffsetY=0.214863)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.89126, 
+    farPlane=13.9525, width=11.1047, height=4.44242, cameraPosition=(3.44898, 
+    -9.64764, -1.90435), cameraUpVector=(-0.193117, -0.0557905, 0.979588), 
+    cameraTarget=(0.0207831, 0.560962, 1.886), viewOffsetX=0.653578, 
+    viewOffsetY=0.204854)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.09572, 
+    farPlane=14.9403, width=10.1111, height=4.04495, cameraPosition=(1.31173, 
+    -5.87022, -7.09038), cameraUpVector=(0.0165599, -0.56386, 0.825705), 
+    cameraTarget=(-0.0574051, 0.780291, 2.08736), viewOffsetX=0.595099, 
+    viewOffsetY=0.186525)
+p = mdb.models['Model-1'].parts['Part-2']
+s = p.faces
+side1Faces = s.getSequenceFromMask(mask=('[#20 ]', ), )
+p.Surface(side1Faces=side1Faces, name='Surf-top')
+#: The surface 'Surf-top' has been created (1 face).
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=17.214, 
+    farPlane=28.0493, width=10.8495, height=4.34033, cameraPosition=(0.962193, 
+    -12.9639, 23.1863), cameraUpVector=(-0.005227, 0.955407, 0.295246), 
+    cameraTarget=(0.324111, 0.238106, 5.43778))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.6908, 
+    farPlane=28.6618, width=10.5197, height=4.20842, cameraPosition=(-2.36884, 
+    -6.07435, 26.5128), cameraUpVector=(-0.0429653, 0.997854, -0.0494013), 
+    cameraTarget=(0.250183, 0.391012, 5.51161))
+p = mdb.models['Model-1'].parts['Part-1']
+s = p.faces
+side1Faces = s.getSequenceFromMask(mask=('[#10 ]', ), )
+p.Surface(side1Faces=side1Faces, name='Surf-bottom')
+#: The surface 'Surf-bottom' has been created (1 face).
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.06501, 
+    farPlane=14.7422, width=7.22123, height=2.88885, cameraPosition=(1.6065, 
+    2.7403, -8.62859), cameraUpVector=(-0.440542, -0.889063, 0.124456))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.45113, 
+    farPlane=14.0585, width=7.56695, height=3.02716, cameraPosition=(2.84543, 
+    -7.58075, -4.97631), cameraUpVector=(-0.131718, -0.402307, 0.90598), 
+    cameraTarget=(0.380652, 0.530401, 2.40214))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=8.88353, 
+    farPlane=13.3361, width=7.95411, height=3.18204, cameraPosition=(8.70085, 
+    -5.99846, 6.23472), cameraUpVector=(-0.312968, 0.603736, 0.733181), 
+    cameraTarget=(0.389044, 0.532669, 2.41821))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=7.73837, 
+    farPlane=14.4254, width=6.92876, height=2.77185, cameraPosition=(2.14735, 
+    -2.36612, 13.0774), cameraUpVector=(-0.380882, 0.9236, -0.0434904), 
+    cameraTarget=(0.465033, 0.490551, 2.33887))
+p = mdb.models['Model-1'].parts['Part-2']
+s = p.faces
+side1Faces = s.getSequenceFromMask(mask=('[#10 ]', ), )
+p.Surface(side1Faces=side1Faces, name='Surf-F')
+#: The surface 'Surf-F' has been created (1 face).
+a1 = mdb.models['Model-1'].rootAssembly
+a1.regenerate()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, interactions=ON, constraints=ON, 
+    engineeringFeatures=ON)
+a = mdb.models['Model-1'].rootAssembly
+region1=a.instances['Part-2-1'].surfaces['Surf-top']
+a = mdb.models['Model-1'].rootAssembly
+region2=a.instances['Part-1-1'].surfaces['Surf-bottom']
+mdb.models['Model-1'].Tie(name='Constraint-1', master=region1, slave=region2, 
+    positionToleranceMethod=COMPUTED, adjust=ON, tieRotations=ON, thickness=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, interactions=OFF, constraints=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+a = mdb.models['Model-1'].rootAssembly
+region = a.instances['Part-2-1'].surfaces['Surf-F']
+mdb.models['Model-1'].loads['Load-1'].setValues(region=region)
+del mdb.models['Model-1'].boundaryConditions['BC-2']
+del mdb.models['Model-1'].boundaryConditions['BC-1']
+session.viewports['Viewport: 1'].view.setValues(nearPlane=13.0271, 
+    farPlane=28.1265, width=24.1855, height=9.67543, cameraPosition=(-3.11327, 
+    -12.3939, -8.84624), cameraUpVector=(-0.385681, -0.160916, 0.908491), 
+    cameraTarget=(3.24349, 4.12986, 5.03325), viewOffsetX=1.94981, 
+    viewOffsetY=1.65079)
+a = mdb.models['Model-1'].rootAssembly
+f1 = a.instances['Part-1-1'].faces
+faces1 = f1.getSequenceFromMask(mask=('[#20 ]', ), )
+region = a.Set(faces=faces1, name='Set-3')
+mdb.models['Model-1'].DisplacementBC(name='BC-1', createStepName='Step-1', 
+    region=region, u1=0.0, u2=0.0, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET, 
+    amplitude=UNSET, fixed=OFF, distributionType=UNIFORM, fieldName='', 
+    localCsys=None)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=17.021, 
+    farPlane=26.1936, width=31.6004, height=12.6417, cameraPosition=(5.14131, 
+    -20.7829, 9.19966), cameraUpVector=(0.0376672, 0.556153, 0.830226), 
+    cameraTarget=(0.163877, 0.568039, 4.15512), viewOffsetX=2.54758, 
+    viewOffsetY=2.15689)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=11.7974, 
+    farPlane=31.5107, width=21.9026, height=8.76213, cameraPosition=(7.49028, 
+    -4.94756, 27.3111), cameraUpVector=(0.624472, 0.680005, -0.384223), 
+    cameraTarget=(-0.303797, 1.97317, 7.37521), viewOffsetX=1.76575, 
+    viewOffsetY=1.49496)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=10.5611, 
+    farPlane=29.3805, width=19.6074, height=7.84394, cameraPosition=(-3.40697, 
+    -5.63828, 26.1504), cameraUpVector=(0.77142, 0.636327, 0.000304312), 
+    cameraTarget=(-0.204577, 2.27389, 5.33632), viewOffsetX=1.58071, 
+    viewOffsetY=1.3383)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, loads=OFF, 
+    bcs=OFF, predefinedFields=OFF, connectors=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=7.58971, 
+    farPlane=14.574, width=9.93139, height=3.98384, viewOffsetX=0.88665, 
+    viewOffsetY=0.0500164)
+elemType1 = mesh.ElemType(elemCode=C3D8, elemLibrary=STANDARD, 
+    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=C3D6, elemLibrary=STANDARD)
+elemType3 = mesh.ElemType(elemCode=C3D4, elemLibrary=STANDARD)
+p = mdb.models['Model-1'].parts['Part-2']
+c = p.cells
+cells = c.getSequenceFromMask(mask=('[#1 ]', ), )
+pickedRegions =(cells, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2, 
+    elemType3))
+p = mdb.models['Model-1'].parts['Part-2']
+p.seedPart(size=1.0, deviationFactor=0.1, minSizeFactor=0.1)
+p = mdb.models['Model-1'].parts['Part-2']
+p.generateMesh()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=7.82338, 
+    farPlane=13.4315, width=10.2372, height=4.1065, cameraPosition=(0.576101, 
+    -8.52742, 8.14692), cameraUpVector=(-0.602305, 0.696281, 0.390411), 
+    cameraTarget=(0.717381, 0.628552, 1.63117), viewOffsetX=0.913948, 
+    viewOffsetY=0.0515563)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+a1 = mdb.models['Model-1'].rootAssembly
+a1.regenerate()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=13.2259, 
+    farPlane=21.7131, width=24.5548, height=9.84981, cameraPosition=(-16.9031, 
+    -1.78937, 9.62251), cameraUpVector=(0.487153, 0.27405, 0.829204), 
+    cameraTarget=(4.36444, 3.41138, 4.45248), viewOffsetX=1.97956, 
+    viewOffsetY=1.67598)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Error in job Job-1: THERE IS NO MATERIAL BY THE NAME MATERIAL-1
+#: Error in job Job-1: 10 elements have missing property definitions. The elements have been identified in element set ErrElemMissingSection.
+#: Job Job-1: Analysis Input File Processor aborted due to errors.
+#: Error in job Job-1: Analysis Input File Processor exited with an error.
+#: Job Job-1 aborted due to errors.
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON, mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].sections['Section-1'].setValues(material='Mat1', 
+    thickness=None)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.462, 
+    farPlane=38.6787, width=14.9278, height=5.97186, cameraPosition=(4.51412, 
+    24.0225, -14.6834), cameraUpVector=(-0.667519, 0.30176, 0.680705), 
+    cameraTarget=(0.0268531, 0.194764, 7.60758))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.21, 
+    farPlane=38.2388, width=15.3664, height=6.14731, cameraPosition=(-25.0317, 
+    4.82009, -12.4375), cameraUpVector=(-0.271109, 0.20075, 0.941382), 
+    cameraTarget=(0.824398, 0.713104, 7.54695))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=29.3699, 
+    farPlane=35.2584, width=17.219, height=6.88846, cameraPosition=(-30.3, 
+    -8.63176, 3.22202), cameraUpVector=(0.11705, 0.380879, 0.917186), 
+    cameraTarget=(0.940744, 1.01018, 7.20112))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.9656, 
+    farPlane=38.6627, width=53.9956, height=21.6009, viewOffsetX=0.0918775, 
+    viewOffsetY=0.433047)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.7957, 
+    farPlane=38.7114, width=53.6421, height=21.4595, cameraPosition=(-28.0694, 
+    -14.2245, 4.00789), cameraUpVector=(0.0382964, 0.459819, 0.887186), 
+    cameraTarget=(0.912364, 1.09556, 7.19139), viewOffsetX=0.0912761, 
+    viewOffsetY=0.430212)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.8582, 
+    farPlane=37.7701, width=53.772, height=21.5115, cameraPosition=(6.75563, 
+    -30.6884, 6.05296), cameraUpVector=(-0.146018, 0.278226, 0.949352), 
+    cameraTarget=(0.00394976, 1.5299, 7.13672), viewOffsetX=0.0914971, 
+    viewOffsetY=0.431254)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.4912, 
+    farPlane=37.957, width=53.0089, height=21.2062, cameraPosition=(28.1624, 
+    -14.8734, 9.04476), cameraUpVector=(-0.17973, 0.477531, 0.860035), 
+    cameraTarget=(-0.80228, 0.686537, 7.11752), viewOffsetX=0.0901985, 
+    viewOffsetY=0.425133)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.3168, 
+    farPlane=36.1314, width=32.6823, height=13.0746, viewOffsetX=0.882843, 
+    viewOffsetY=0.561758)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
+    engineeringFeatures=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].materials['Mat2'].elastic.setValues(dependencies=1, 
+    table=((0.1, 0.3, 0.1), (1e+18, 0.3, 1e+18)))
+mdb.models['Model-1'].materials['Mat2'].UserDefinedField()
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.6708, 
+    farPlane=40.0674, width=24.1125, height=9.64621, viewOffsetX=0.803454, 
+    viewOffsetY=-0.332608)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.7547, 
+    farPlane=39.3287, width=25.0925, height=10.0382, cameraPosition=(27.6194, 
+    13.0032, 22.0836), cameraUpVector=(-0.496814, 0.720323, -0.484057), 
+    cameraTarget=(0.583032, 0.284469, 8.22517), viewOffsetX=0.836108, 
+    viewOffsetY=-0.346126)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.7307, 
+    farPlane=40.3503, width=25.0708, height=10.0296, cameraPosition=(28.9999, 
+    -1.90055, 25.2848), cameraUpVector=(-0.371789, 0.926642, 0.0557509), 
+    cameraTarget=(0.684924, -0.405101, 8.52735), viewOffsetX=0.835384, 
+    viewOffsetY=-0.345826)
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=24.9414, 
+    farPlane=39.7299, width=14.6225, height=5.84975, cameraPosition=(17.9435, 
+    -9.27743, -18.6791), cameraUpVector=(-0.354811, 0.924395, -0.140009), 
+    cameraTarget=(0.201117, -0.237348, 7.55573))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.5332, 
+    farPlane=39.074, width=14.9695, height=5.98856, cameraPosition=(21.6995, 
+    -7.20023, -16.3959), cameraUpVector=(0.224361, 0.886426, 0.404859), 
+    cameraTarget=(0.131374, -0.275918, 7.51333))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.3001, 
+    farPlane=37.2497, width=15.4191, height=6.16843, cameraPosition=(24.3471, 
+    14.1144, -9.25786), cameraUpVector=(-0.357098, 0.624238, 0.694844), 
+    cameraTarget=(0.0795445, -0.693181, 7.37359))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.4501, 
+    farPlane=36.3847, width=15.5071, height=6.20361, cameraPosition=(14.8935, 
+    25.0648, -6.5527), cameraUpVector=(-0.812643, 0.295344, 0.502377), 
+    cameraTarget=(0.424998, -1.09333, 7.27474))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.3575, 
+    farPlane=37.4773, width=30.2144, height=12.0873, viewOffsetX=0.607889, 
+    viewOffsetY=-0.509854)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.4363, 
+    farPlane=35.8574, width=30.3084, height=12.1249, cameraPosition=(-11.9766, 
+    27.3662, -1.13927), cameraUpVector=(-0.299643, -0.269561, 0.915178), 
+    cameraTarget=(2.05475, -1.29587, 7.00878), viewOffsetX=0.609779, 
+    viewOffsetY=-0.511439)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=24.2441, 
+    farPlane=38.0269, width=28.8879, height=11.5566, cameraPosition=(-19.0487, 
+    -17.8995, -9.03), cameraUpVector=(-0.0947217, -0.157583, 0.982952), 
+    cameraTarget=(1.50703, 1.98337, 7.3075), viewOffsetX=0.581199, 
+    viewOffsetY=-0.487468)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.407, 
+    farPlane=36.5084, width=30.2736, height=12.111, cameraPosition=(10.7365, 
+    -27.2468, 15.9241), cameraUpVector=(-0.539946, 0.427397, 0.725114), 
+    cameraTarget=(-0.391783, 1.96787, 5.55853), viewOffsetX=0.609078, 
+    viewOffsetY=-0.510851)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=23.9954, 
+    farPlane=37.8641, width=28.5917, height=11.4381, cameraPosition=(20.694, 
+    17.9789, 22.3587), cameraUpVector=(-0.915933, 0.0998735, 0.388706), 
+    cameraTarget=(-0.423958, -1.0577, 5.73269), viewOffsetX=0.575237, 
+    viewOffsetY=-0.482468)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.1942, 
+    farPlane=34.1765, width=32.4032, height=12.9629, cameraPosition=(-8.13593, 
+    29.9462, 7.21994), cameraUpVector=(-0.658648, -0.560499, 0.50202), 
+    cameraTarget=(1.66773, -1.49479, 6.84802), viewOffsetX=0.651921, 
+    viewOffsetY=-0.546785)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.8877, 
+    farPlane=34.4831, width=32.038, height=12.8168, cameraPosition=(-8.10968, 
+    29.9543, 7.22318), cameraUpVector=(-0.64434, -0.556306, 0.524737), 
+    cameraTarget=(1.69398, -1.48664, 6.85126), viewOffsetX=0.644573, 
+    viewOffsetY=-0.540622)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=22.8363, 
+    farPlane=38.4901, width=27.2105, height=10.8856, cameraPosition=(24.1483, 
+    6.09538, 25.489), cameraUpVector=(-0.657978, -0.605049, 0.448309), 
+    cameraTarget=(-0.464239, -0.699418, 4.6843), viewOffsetX=0.547449, 
+    viewOffsetY=-0.459161)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=24.494, 
+    farPlane=35.603, width=29.1859, height=11.6758, cameraPosition=(-21.4927, 
+    18.3429, 16.8085), cameraUpVector=(-0.0930911, -0.912096, 0.399267), 
+    cameraTarget=(3.01241, -0.882479, 6.1003), viewOffsetX=0.587189, 
+    viewOffsetY=-0.492492)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=22.1151, 
+    farPlane=37.6777, width=26.3514, height=10.5419, cameraPosition=(-12.9946, 
+    18.3406, 26.6037), cameraUpVector=(0.170824, -0.89614, 0.409575), 
+    cameraTarget=(2.69447, -0.837186, 4.90477), viewOffsetX=0.530161, 
+    viewOffsetY=-0.444661)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=23.1836, 
+    farPlane=36.2545, width=27.6246, height=11.0512, cameraPosition=(-23.5354, 
+    8.90509, 22.1169), cameraUpVector=(0.582135, -0.574991, 0.574894), 
+    cameraTarget=(3.64361, 0.656497, 5.44243), viewOffsetX=0.555775, 
+    viewOffsetY=-0.466144)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=24.2528, 
+    farPlane=34.3273, width=28.8986, height=11.5609, cameraPosition=(-23.9673, 
+    -13.6138, 14.591), cameraUpVector=(0.625088, 0.0334859, 0.779836), 
+    cameraTarget=(3.01387, 3.36458, 6.31295), viewOffsetX=0.581407, 
+    viewOffsetY=-0.487643)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=22.9073, 
+    farPlane=36.0226, width=27.2954, height=10.9195, cameraPosition=(-25.0747, 
+    0.249666, 21.4301), cameraUpVector=(0.754439, 0.0245126, 0.655912), 
+    cameraTarget=(3.53765, 1.86384, 5.1974), viewOffsetX=0.549153, 
+    viewOffsetY=-0.46059)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.2259, 
+    farPlane=34.8609, width=30.0581, height=12.0248, cameraPosition=(-19.1813, 
+    22.1762, -0.0837157), cameraUpVector=(0.620045, 0.346525, 0.703892), 
+    cameraTarget=(3.30377, -0.816212, 7.02573), viewOffsetX=0.604736, 
+    viewOffsetY=-0.507209)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.9296, 
+    farPlane=33.9298, width=30.8967, height=12.3602, cameraPosition=(-25.586, 
+    15.1423, 8.23449), cameraUpVector=(0.678992, 0.5116, 0.526531), 
+    cameraTarget=(3.61391, 0.058388, 6.08646), viewOffsetX=0.621605, 
+    viewOffsetY=-0.521358)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=24.771, 
+    farPlane=34.9949, width=29.5161, height=11.8079, cameraPosition=(-26.0187, 
+    12.8655, 12.9249), cameraUpVector=(0.708684, 0.51876, 0.478178), 
+    cameraTarget=(3.55781, 0.336769, 5.64225), viewOffsetX=0.59383, 
+    viewOffsetY=-0.498062)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.1611, 
+    farPlane=34.6049, width=28.1821, height=11.2742, viewOffsetX=0.364438, 
+    viewOffsetY=-0.609874)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.2075, 
+    farPlane=40.4306, width=15.9511, height=6.38123, cameraPosition=(24.3155, 
+    -3.31061, 30.4949), cameraUpVector=(-0.249751, 0.964402, -0.0869123), 
+    cameraTarget=(0.283803, -0.15992, 8.19383))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Mises'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.009, 
+    farPlane=42.7739, width=15.8347, height=6.33468, cameraPosition=(-2.87509, 
+    -14.564, 38.0507), cameraUpVector=(-0.819739, 0.544041, -0.17902), 
+    cameraTarget=(-0.426132, -0.453742, 8.39111))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.7956, 
+    farPlane=41.9875, width=15.7096, height=6.28464, cameraPosition=(17.7473, 
+    -1.37263, 36.4517), cameraUpVector=(-0.849225, 0.505334, 0.153146), 
+    cameraTarget=(0.729543, 0.285501, 8.3015))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(COMPONENT, 
+    'S33'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.7854, 
+    farPlane=42.7264, width=15.7036, height=6.28224, cameraPosition=(-1.7733, 
+    -12.7331, 38.8116), cameraUpVector=(-0.909596, 0.29996, -0.287503), 
+    cameraTarget=(-0.0965741, -0.195276, 8.40137))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=28.5584, 
+    farPlane=40.1355, width=16.7431, height=6.69807, cameraPosition=(27.0649, 
+    11.2799, 25.6683), cameraUpVector=(-0.773193, 0.618218, 0.141348), 
+    cameraTarget=(1.41335, 1.06201, 7.71321))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.104, 
+    farPlane=41.8454, width=15.8904, height=6.35697, cameraPosition=(-7.95587, 
+    -18.7665, 34.0607), cameraUpVector=(-0.326117, 0.933958, 0.146186), 
+    cameraTarget=(-0.0251117, -0.172134, 8.05793))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='E', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Max. Principal'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=1000.0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].materials['Mat2'].elastic.setValues(table=((10000.0, 0.3, 
+    10000.0), (1e+18, 0.3, 1e+18)))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Mises'), )
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(COMPONENT, 
+    'S23'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(COMPONENT, 
+    'S33'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step='Step-1', frame=0)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step='Step-1', frame=1)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['Model-1'].steps['Step-1'].setValues(timeIncrementationMethod=FIXED, 
+    initialInc=0.5, noStop=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Mises'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb']
+xyList = xyPlot.xyDataListFromField(odb=odb, outputPosition=INTEGRATION_POINT, 
+    variable=(('FV1', INTEGRATION_POINT), ), elementPick=(('PART-2-1', 1, (
+    '[#1 ]', )), ), )
+xyp = session.XYPlot('XYPlot-1')
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+curveList = session.curveSet(xyData=xyList)
+chart.setValues(curvesToPlot=curveList)
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       4
+#: Number of Node Sets:          4
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF, loads=ON, 
+    bcs=ON, predefinedFields=ON, connectors=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=12.1843, 
+    farPlane=22.7548, width=32.8793, height=13.1533, viewOffsetX=4.61333, 
+    viewOffsetY=0.869907)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.9375, 
+    farPlane=26.3203, width=45.7058, height=18.2846, cameraPosition=(-6.65956, 
+    -20.3754, 10.337), cameraUpVector=(0.218849, 0.443465, 0.869163), 
+    cameraTarget=(-4.62025, 1.79863, 7.13742), viewOffsetX=6.41304, 
+    viewOffsetY=1.20927)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=16.7628, 
+    farPlane=29.4045, width=45.2343, height=18.096, cameraPosition=(4.80825, 
+    -22.7442, 10.4638), cameraUpVector=(-0.220479, 0.485503, 0.845976), 
+    cameraTarget=(-4.08122, -2.68414, 5.49864), viewOffsetX=6.34688, 
+    viewOffsetY=1.19679)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=19.7063, 
+    farPlane=32.1131, width=53.1773, height=21.2736, cameraPosition=(26.0047, 
+    -7.86558, 10.8214), cameraUpVector=(-0.507185, 0.113784, 0.854293), 
+    cameraTarget=(3.95539, -7.16342, 6.41517), viewOffsetX=7.46137, 
+    viewOffsetY=1.40694)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=21.9011, 
+    farPlane=33.9751, width=59.0999, height=23.6429, cameraPosition=(23.8621, 
+    18.0093, 9.54955), cameraUpVector=(-0.466063, -0.147395, 0.872387), 
+    cameraTarget=(10.7391, -0.201689, 8.05757), viewOffsetX=8.29238, 
+    viewOffsetY=1.56364)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=22.6786, 
+    farPlane=36.0775, width=61.198, height=24.4823, cameraPosition=(2.45325, 
+    31.1791, 10.2809), cameraUpVector=(-0.18709, -0.473292, 0.860809), 
+    cameraTarget=(7.98626, 9.46798, 8.25752), viewOffsetX=8.58677, 
+    viewOffsetY=1.61915)
+a = mdb.models['Model-1'].rootAssembly
+f1 = a.instances['Part-2-1'].faces
+faces1 = f1.getSequenceFromMask(mask=('[#f ]', ), )
+f2 = a.instances['Part-1-1'].faces
+faces2 = f2.getSequenceFromMask(mask=('[#f ]', ), )
+e2 = a.instances['Part-1-1'].edges
+edges2 = e2.getSequenceFromMask(mask=('[#100 ]', ), )
+region = a.Set(edges=edges2, faces=faces1+faces2, name='Set-4')
+mdb.models['Model-1'].DisplacementBC(name='BC-2', createStepName='Step-1', 
+    region=region, u1=0.0, u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET, 
+    amplitude=UNSET, fixed=OFF, distributionType=UNIFORM, fieldName='', 
+    localCsys=None)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       5
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       5
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+p = mdb.models['Model-1'].parts['Part-2']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models['Model-1'].materials['Mat2'].elastic.setValues(table=((1.0, 0.3, 
+    1.0), (1e+18, 0.3, 1e+18)))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       5
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     2
+#: Number of Meshes:             2
+#: Number of Element Sets:       5
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.7713, 
+    farPlane=40.9668, width=34.47, height=13.7897, viewOffsetX=1.24905, 
+    viewOffsetY=-0.734422)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.7114, 
+    farPlane=41.5703, width=37.065, height=14.8279, cameraPosition=(30.1996, 
+    -4.60741, 23.8649), cameraUpVector=(0.00181795, 0.910959, -0.412493), 
+    cameraTarget=(1.5494, 0.521074, 8.44905), viewOffsetX=1.34308, 
+    viewOffsetY=-0.78971)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.6506, 
+    farPlane=42.5011, width=35.6463, height=14.2603, cameraPosition=(27.511, 
+    -3.46289, 27.9964), cameraUpVector=(0.0201846, 0.914446, -0.404205), 
+    cameraTarget=(1.19658, 0.550056, 8.59976), viewOffsetX=1.29167, 
+    viewOffsetY=-0.75948)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.7571, 
+    farPlane=42.3545, width=35.7887, height=14.3173, cameraPosition=(27.6558, 
+    -2.95044, 27.8714), cameraUpVector=(-0.0191127, 0.925858, -0.377389), 
+    cameraTarget=(1.14652, 0.519669, 8.63604), viewOffsetX=1.29683, 
+    viewOffsetY=-0.762515)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.0153, 
+    farPlane=42.0155, width=36.1342, height=14.4555, cameraPosition=(28.7449, 
+    -1.81368, 26.4966), cameraUpVector=(-0.132328, 0.946756, -0.293501), 
+    cameraTarget=(1.1123, 0.406896, 8.71194), viewOffsetX=1.30935, 
+    viewOffsetY=-0.769874)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9866, 
+    farPlane=42.0443, width=36.0959, height=14.4401, viewOffsetX=1.30796, 
+    viewOffsetY=-0.769056)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9861, 
+    farPlane=42.0448, width=36.0953, height=14.4399, viewOffsetX=1.30794, 
+    viewOffsetY=-0.769043)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9861, 
+    farPlane=42.0448, width=36.0953, height=14.4399, viewOffsetX=1.30794, 
+    viewOffsetY=-0.769044)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9861, 
+    farPlane=42.0448, width=36.0953, height=14.4399, viewOffsetX=1.30794, 
+    viewOffsetY=-0.769045)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9861, 
+    farPlane=42.0448, width=36.0953, height=14.4399, viewOffsetX=1.30794, 
+    viewOffsetY=-0.769046)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=27.3638, 
+    farPlane=41.6988, width=36.6006, height=14.6421, cameraPosition=(29.9421, 
+    -2.08361, 24.6622), cameraUpVector=(-0.175976, 0.957502, -0.228524), 
+    cameraTarget=(1.2109, 0.301106, 8.73683), viewOffsetX=1.32625, 
+    viewOffsetY=-0.779811)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=28.6192, 
+    farPlane=39.4482, width=38.2799, height=15.3139, cameraPosition=(31.4013, 
+    12.2505, 15.0323), cameraUpVector=(-0.676123, 0.73052, 0.0959098), 
+    cameraTarget=(1.36921, 0.318842, 8.6685), viewOffsetX=1.3871, 
+    viewOffsetY=-0.815588)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=25.8565, 
+    farPlane=40.1956, width=34.5846, height=13.8356, cameraPosition=(-14.2079, 
+    26.8212, -6.79833), cameraUpVector=(-0.297109, -0.0760935, 0.951807), 
+    cameraTarget=(1.18293, 1.46196, 7.51319), viewOffsetX=1.2532, 
+    viewOffsetY=-0.736856)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=26.9033, 
+    farPlane=39.3191, width=35.9848, height=14.3957, cameraPosition=(-28.7556, 
+    11.6915, -4.08201), cameraUpVector=(0.0136671, 0.0559707, 0.998339), 
+    cameraTarget=(0.659846, 1.92531, 7.05981), viewOffsetX=1.30393, 
+    viewOffsetY=-0.766687)
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb']
+session.xyDataListFromField(odb=odb, outputPosition=INTEGRATION_POINT, 
+    variable=(('FV1', INTEGRATION_POINT), ), elementPick=(('PART-2-1', 1, (
+    '[#1 ]', )), ), )
+odb = session.odbs['D:/Coding/Github/Fortarn/Abaqus/USDFLD/4. soil_E_z for/cae/Job-1.odb']
+xyList = xyPlot.xyDataListFromField(odb=odb, outputPosition=INTEGRATION_POINT, 
+    variable=(('FV1', INTEGRATION_POINT), ), elementPick=(('PART-2-1', 1, (
+    '[#1 ]', )), ), )
+xyp = session.xyPlots['XYPlot-1']
+chartName = xyp.charts.keys()[0]
+chart = xyp.charts[chartName]
+curveList = session.curveSet(xyData=xyList)
+chart.setValues(curvesToPlot=curveList)
+session.viewports['Viewport: 1'].setValues(displayedObject=xyp)
+mdb.save()
+#: The model database has been saved to "D:\Coding\Github\Fortarn\Abaqus\USDFLD\4. soil_E_z for\cae\E_z.cae".

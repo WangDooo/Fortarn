@@ -5,7 +5,7 @@ Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens from Flexnet server DESKTOP-403292K.
 <1019 out of 1024 licenses remain available>.
 Begin Compiling Abaqus/Standard User Subroutines
-2019/8/12 20:28:54
+2019/8/13 22:26:31
 Intel(R) Visual Fortran Intel(R) 64 Compiler XE for applications running on Intel(R) 64, Version 14.0.1.139 Build 20131008
 Copyright (C) 1985-2013 Intel Corporation.  All rights reserved.
 
@@ -13,20 +13,20 @@ End Compiling Abaqus/Standard User Subroutines
 Begin Linking Abaqus/Standard User Subroutines
    正在创建库 standardU.lib 和对象 standardU.exp
 End Linking Abaqus/Standard User Subroutines
-2019/8/12 20:28:54
+2019/8/13 22:26:31
 Begin Analysis Input File Processor
-2019/8/12 20:28:54
+2019/8/13 22:26:31
 Run pre.exe
-2019/8/12 20:28:57
+2019/8/13 22:26:35
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-2019/8/12 20:28:57
+2019/8/13 22:26:35
 Run standard.exe
-2019/8/12 20:29:03
+2019/8/13 22:26:39
 End Abaqus/Standard Analysis
 Begin MFS->SFS and SIM cleanup
-2019/8/12 20:29:04
+2019/8/13 22:26:39
 Run SMASimUtility.exe
-2019/8/12 20:29:04
+2019/8/13 22:26:40
 End MFS->SFS and SIM cleanup
 Abaqus JOB Job-1 COMPLETED

@@ -2,6 +2,7 @@ program main
     implicit none
     
     real :: E_now
+    real :: E_m
     
     
     !integer :: i
@@ -33,4 +34,7 @@ program main
     write(*,*) c
     E_now = 10000.0*TAN(38.0/180.0*3.1415)*sqrt(9.5*(10.0-0.0))
     write(*,*) E_now
+    
+    E_m = 560*100*(2.6/100)**0.6
+    write(*,*) E_m
 end program main

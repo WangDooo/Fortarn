@@ -13,14 +13,26 @@
       character(len=10) :: str
       real :: value
       
+      if (CMNAME(1:4) .eq. 'MAT1') then
+          E_now = 10000.0*TAN(38.0/180.0*3.1415)*
+     1    sqrt(9.5*(10.0-coord(3)))
+          STATEV(1) =E_now
       
-      E_now = 10000.0*TAN(38.0/180.0*3.1415)*sqrt(9.5*(10.0-coord(3)))
-      STATEV(1) =E_now
-      str = 'E_now'
-      value = real(E_now)
-      call WriteValue(str,value)
       
-      Field(1) = E_now
+          Field(1) = E_now
+      else if (CMNAME(1:4) .eq. 'MAT2') then
+          CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 
+     1        MATLAYO,LACCFLA) 
+          S11 = array(1)
+          S22 = array(2)
+          S33 = array(3)
+          sigma_m = (abs(S11)+abs(S22)+abs(S33)) / 3.0
+          str = 'S22'
+          value = real(S22)
+          call WriteValue(str,value)
+          E_m = 560.0*100.0*(sigma_m/100.0)**0.6
+          Field(1) = E_m 
+      end if 
       
       return
       end subroutine USDFLD

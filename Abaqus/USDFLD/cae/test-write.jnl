@@ -1424,3 +1424,24 @@ mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE,
 mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Mon Aug 12 15:21:22 2019', 
     'jobName': 'Job-1'})
 # Save by WangDoo on 2019_08_12-16.30.23; build 2017 2016_09_28-05.54.59 126836
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.setValues(
+    table=((37.7, 2.9), ))
+mdb.models['Model-1'].materials['Material-1'].mohrCoulombPlasticity.tensionCutOff.setValues(
+    dependencies=0, table=((0.0, 0.0), ), temperatureDependency=OFF)
+del mdb.models['Model-1'].steps['Step-1']
+mdb.models['Model-1'].GeostaticStep(name='Step-1', previous='Initial', utol=
+    None)
+# Save by WangDoo on 2019_08_13-22.16.09; build 2017 2016_09_28-05.54.59 126836
