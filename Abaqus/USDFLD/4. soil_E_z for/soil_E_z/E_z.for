@@ -15,11 +15,11 @@
       
       if (CMNAME(1:4) .eq. 'MAT1') then
           E_now = 10000.0*TAN(38.0/180.0*3.1415)*
-     1    sqrt(9.5*(10.0-coord(3)))
+     1    sqrt(9.5*(40.0-coord(3)))
           STATEV(1) =E_now
-      
-      
           Field(1) = E_now
+
+
       else if (CMNAME(1:4) .eq. 'MAT2') then
           CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 
      1        MATLAYO,LACCFLA) 
