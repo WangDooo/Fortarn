@@ -13,21 +13,21 @@
       character(len=10) :: str
       real :: value
       
-      str = 'Time1'
-      value = real(TIME(1))
-      call WriteValue(str,value)
-      if(TIME(1) .lt. 0.2) then
-          FIELD(1) = 90000
-      else if(TIME(1) .ge. 0.2 .and. TIME(1) .lt. 0.4) then
-          FIELD(1) = 80000
-      else if(TIME(1) .ge. 0.4 .and. TIME(1) .lt. 0.6) then
-          FIELD(1) = 70000
-      else if(TIME(1) .ge. 0.6 .and. TIME(1) .lt. 0.8) then
-          FIELD(1) = 60000
-      else
-          FIELD(1) = 50000
-      end if
-      
+      !str = 'Time1'
+      !value = real(TIME(1))
+      !call WriteValue(str,value)
+      !if(TIME(1) .lt. 0.2) then
+      !    FIELD(1) = 90000
+      !else if(TIME(1) .ge. 0.2 .and. TIME(1) .lt. 0.4) then
+      !    FIELD(1) = 80000
+      !else if(TIME(1) .ge. 0.4 .and. TIME(1) .lt. 0.6) then
+      !    FIELD(1) = 70000
+      !else if(TIME(1) .ge. 0.6 .and. TIME(1) .lt. 0.8) then
+      !    FIELD(1) = 60000
+      !else
+      !    FIELD(1) = 50000
+      !end if
+      FIELD(1) = 50000
       return
       end subroutine USDFLD
     

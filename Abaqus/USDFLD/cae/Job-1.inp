@@ -38,6 +38,14 @@
  3, 4, 7, 8
 *Elset, elset=Set-1, instance=Part-1-1
  1,
+*Nset, nset=Set-2, instance=Part-1-1
+ 3, 4, 7, 8
+*Elset, elset=Set-2, instance=Part-1-1
+ 1,
+*Nset, nset=Set-3, instance=Part-1-1, generate
+ 1,  8,  1
+*Elset, elset=Set-3, instance=Part-1-1
+ 1,
 *Elset, elset=_Surf-1_S6, internal, instance=Part-1-1
  1,
 *Surface, type=ELEMENT, name=Surf-1
@@ -50,20 +58,26 @@ _Surf-2_S3, S3
  1,
 *Surface, type=ELEMENT, name=Surf-3
 _Surf-3_S3, S3
+*Elset, elset=_Surf-4_S3, internal, instance=Part-1-1
+ 1,
+*Surface, type=ELEMENT, name=Surf-4
+_Surf-4_S3, S3
 *End Assembly
 *Amplitude, name=Amp-1, definition=PERIODIC
-1,       3.1415926,              0.,              0.
+1,         3.14159,            -1.5,              1.
              0.,              1.
 ** 
 ** MATERIALS
 ** 
 *Material, name=Material-1
+*Depvar
+      3,
 *Elastic, dependencies=1
- 1e-19,   0.3, , 1e-19
- 1e+19,   0.3, , 1e+19
+  100.,  0.21, ,  100.
+ 1e+19,  0.21, , 1e+19
 *User Defined Field
 *Mohr Coulomb
- 37.3, 2.9
+ 37.7, 2.9
 *Mohr Coulomb Hardening
  0.5,0.
 ** ----------------------------------------------------------------
@@ -71,23 +85,23 @@ _Surf-3_S3, S3
 *initial conditions, type=field, variable=1
 ** STEP: Step-1
 **
-*Step, name=Step-1, nlgeom=NO, inc=10000
-*Static, direct
-0.1, 2., 
+*Step, name=Step-1, nlgeom=NO
+*Geostatic, utol
+0.1, 1., 1e-05, 1.
 ** 
 ** BOUNDARY CONDITIONS
 ** 
 ** Name: BC-1 Type: Displacement/Rotation
 *Boundary
-Set-1, 1, 1
-Set-1, 2, 2
-Set-1, 3, 3
+Set-2, 1, 1
+Set-2, 2, 2
+Set-2, 3, 3
 ** 
 ** LOADS
 ** 
-** Name: Load-1   Type: Surface traction
-*Dsload, amplitude=Amp-1
-Surf-3, TRSHR, 0.1, 1., 0., 0.
+** Name: Load-1   Type: Body force
+*Dload
+Set-3, BZ, -0.1
 ** 
 ** OUTPUT REQUESTS
 ** 
@@ -99,6 +113,33 @@ Surf-3, TRSHR, 0.1, 1., 0., 0.
 *Node Output
 U, 
 *Element Output, directions=YES
-E, FV, S
+E, FV, S, SDV
+*Output, history, frequency=0
+*End Step
+** ----------------------------------------------------------------
+** 
+** STEP: Step-2
+** 
+*Step, name=Step-2, nlgeom=NO, inc=10000
+*Static, direct
+0.1, 10., 
+** 
+** LOADS
+** 
+** Name: Load-2   Type: Surface traction
+*Dsload, amplitude=Amp-1
+Surf-4, TRSHR, 0.02, 1., 0., 0.
+** 
+** OUTPUT REQUESTS
+** 
+*Restart, write, frequency=0
+** 
+** FIELD OUTPUT: F-Output-1
+** 
+*Output, field
+*Node Output
+U, 
+*Element Output, directions=YES
+E, FV, S, SDV
 *Output, history, frequency=0
 *End Step
