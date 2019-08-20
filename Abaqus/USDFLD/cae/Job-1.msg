@@ -1,6 +1,6 @@
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 14-8月-2019   Time 17:31:53
+   Abaqus 3DEXPERIENCE R2017x                                  Date 15-8月-2019   Time 14:49:08
    For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -84,14 +84,31 @@
 
      PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
 
+     ELEMENT OPERATIONS WILL BE CARRIED OUT IN PARALLEL USING   2 PROCESSORS
+
+     PARALLEL CONTACT TRACKING ENABLED
+
+
      COLLECTING MODEL CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
 
      COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+ 
+     GPU SOLVER ACCELERATION UNAVAILABLE. SEE JOB LOG FILE FOR MORE DETAILS.
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
+ 
+     INITIAL ELEMENT LOAD BALANCE
+        COMPUTE NODE   1   PROCESS    NUMBER OF ELEMENTS
+                              1            1
+                              2            0
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -106,28 +123,62 @@
 
 
  AVERAGE FORCE                      9.637E-05   TIME AVG. FORCE       9.637E-05
- LARGEST RESIDUAL FORCE             1.193E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             6.082E-19   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -8.776E-08   AT NODE          2   DOF  3
+ LARGEST INCREMENT OF DISP.        -4.914E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -8.776E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.914E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           8.776E-08
+ LARGEST DISPLACEMENT                           4.914E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      9.637E-05   TIME AVG. FORCE       9.637E-05
+ LARGEST RESIDUAL FORCE             2.982E-19   AT NODE          1   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.         6.576E-20   AT NODE          5   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.        6.576E-20   AT NODE          5   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           6.576E-20
           DISPLACEMENT CHANGE WITHIN LIMITS
 
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.100    
  STEP TIME COMPLETED       0.100    ,  TOTAL TIME COMPLETED        0.100    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     2 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -142,29 +193,63 @@
 
 
  AVERAGE FORCE                      5.204E-04   TIME AVG. FORCE       3.084E-04
- LARGEST RESIDUAL FORCE            -2.439E-19   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             6.234E-19   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -8.776E-08   AT NODE          5   DOF  3
+ LARGEST INCREMENT OF DISP.        -4.914E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        3.397E-22   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.914E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           1.755E-07
+ LARGEST DISPLACEMENT                           4.914E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      5.204E-04   TIME AVG. FORCE       3.084E-04
+ LARGEST RESIDUAL FORCE             3.490E-19   AT NODE          5   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.         3.909E-20   AT NODE          6   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.        3.909E-20   AT NODE          6   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           3.909E-20
           DISPLACEMENT CHANGE WITHIN LIMITS
           TIME INCREMENT MAY NOW INCREASE TO    0.150    
 
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.200    
  STEP TIME COMPLETED       0.200    ,  TOTAL TIME COMPLETED        0.200    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     3 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.150    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -179,102 +264,163 @@
 
 
  AVERAGE FORCE                      9.107E-04   TIME AVG. FORCE       5.092E-04
- LARGEST RESIDUAL FORCE             2.717E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -1.301E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.316E-07   AT NODE          6   DOF  3
+ LARGEST INCREMENT OF DISP.        -4.400E-05   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.962E-22   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.400E-05   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           3.071E-07
+ LARGEST DISPLACEMENT                           4.400E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      9.107E-04   TIME AVG. FORCE       5.092E-04
+ LARGEST RESIDUAL FORCE             1.301E-18   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.        -1.340E-19   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.       -1.340E-19   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           1.340E-19
           DISPLACEMENT CHANGE WITHIN LIMITS
           TIME INCREMENT MAY NOW INCREASE TO    0.225    
 
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED  0.150    ,  FRACTION OF STEP COMPLETED  0.350    
  STEP TIME COMPLETED       0.350    ,  TOTAL TIME COMPLETED        0.350    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     4 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.225    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.496E-03   TIME AVG. FORCE       7.559E-04
- LARGEST RESIDUAL FORCE             2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             1.491E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.974E-07   AT NODE          6   DOF  3
+ LARGEST INCREMENT OF DISP.        -2.480E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        5.646E-22   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.480E-05   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           5.046E-07
+ LARGEST DISPLACEMENT                           2.480E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      1.496E-03   TIME AVG. FORCE       7.559E-04
+ LARGEST RESIDUAL FORCE            -1.355E-18   AT NODE          1   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.         7.491E-20   AT NODE          5   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.        7.491E-20   AT NODE          5   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           7.491E-20
           DISPLACEMENT CHANGE WITHIN LIMITS
           TIME INCREMENT MAY NOW INCREASE TO    0.338    
 
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED  0.225    ,  FRACTION OF STEP COMPLETED  0.575    
  STEP TIME COMPLETED       0.575    ,  TOTAL TIME COMPLETED        0.575    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     5 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.338    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.374E-03   TIME AVG. FORCE       1.080E-03
- LARGEST RESIDUAL FORCE             2.006E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -7.589E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.962E-07   AT NODE          1   DOF  3
+ LARGEST INCREMENT OF DISP.        -2.977E-05   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.085E-21   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.977E-05   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           8.008E-07
-          DISPLACEMENT CHANGE WITHIN LIMITS
-
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
-
- TIME INCREMENT COMPLETED  0.338    ,  FRACTION OF STEP COMPLETED  0.913    
- STEP TIME COMPLETED       0.913    ,  TOTAL TIME COMPLETED        0.913    
-
-
-  INCREMENT     6 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  8.750E-02
+ LARGEST DISPLACEMENT                           2.977E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -285,30 +431,100 @@
        ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      2.374E-03   TIME AVG. FORCE       1.080E-03
+ LARGEST RESIDUAL FORCE             4.554E-18   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.        -3.014E-19   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.       -3.014E-19   AT NODE          2   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           3.014E-19
+          DISPLACEMENT CHANGE WITHIN LIMITS
+
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
+
+ TIME INCREMENT COMPLETED  0.338    ,  FRACTION OF STEP COMPLETED  0.913    
+ STEP TIME COMPLETED       0.913    ,  TOTAL TIME COMPLETED        0.913    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
+
+
+  INCREMENT     6 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  8.750E-02
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =  0.10000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       1.333E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -9.595E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -7.679E-08   AT NODE          6   DOF  3
+ LARGEST INCREMENT OF DISP.         3.333E-05   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.448E-21   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        3.333E-05   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
- LARGEST DISPLACEMENT                           8.776E-07
+ LARGEST DISPLACEMENT                           3.333E-05
+          DISPLACEMENT CHANGE EXCEEDED LIMITS
+
+  NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
+     CHECK POINT   START OF SOLVER    
+
+     CHECK POINT  END OF SOLVER       
+
+       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED WALLCLOCK TIME (SEC) =          0
+
+               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
+
+
+ AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       1.333E-03
+ LARGEST RESIDUAL FORCE             6.017E-18   AT NODE          1   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST INCREMENT OF DISP.        -3.539E-19   AT NODE          1   DOF  3
+   INSTANCE: PART-1-1                                                                        
+ LARGEST CORRECTION TO DISP.       -3.539E-19   AT NODE          1   DOF  3
+   INSTANCE: PART-1-1                                                                        
+          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+
+ MAXIMUM CHANGE OF DISPLACEMENTS ALLOWED        1.000E-05
+ LARGEST DISPLACEMENT                           3.539E-19
           DISPLACEMENT CHANGE WITHIN LIMITS
 
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED  8.750E-02,  FRACTION OF STEP COMPLETED   1.00    
  STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
 1
 
-   Abaqus 3DEXPERIENCE R2017x                                  Date 14-8月-2019   Time 17:31:53
+   Abaqus 3DEXPERIENCE R2017x                                  Date 15-8月-2019   Time 14:49:20
    For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -373,12 +589,26 @@
 
      PRINT OF INCREMENT NUMBER, TIME, ETC., TO THE MESSAGE FILE EVERY     1  INCREMENTS
 
+     ELEMENT OPERATIONS WILL BE CARRIED OUT IN PARALLEL USING   2 PROCESSORS
+
      COLLECTING STEP CONSTRAINT INFORMATION FOR OVERCONSTRAINT CHECKS
+ 
+     GPU SOLVER ACCELERATION UNAVAILABLE. SEE JOB LOG FILE FOR MORE DETAILS.
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
+ 
+     INITIAL ELEMENT LOAD BALANCE
+        COMPUTE NODE   1   PROCESS    NUMBER OF ELEMENTS
+                              1            1
+                              2            0
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -393,11 +623,11 @@
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.101E-03
- LARGEST RESIDUAL FORCE             6.559E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         9.987E-08   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.861E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        9.987E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        1.861E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -406,11 +636,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  1.000E-02
  STEP TIME COMPLETED       0.100    ,  TOTAL TIME COMPLETED         1.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     2 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -425,11 +660,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.130E-03
- LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             8.294E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.898E-07   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.         5.401E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.900E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        3.540E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -438,11 +673,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  2.000E-02
  STEP TIME COMPLETED       0.200    ,  TOTAL TIME COMPLETED         1.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     3 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -457,11 +697,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.182E-03
- LARGEST RESIDUAL FORCE            -6.939E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -7.318E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.514E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         8.412E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.616E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        3.011E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -470,11 +710,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  3.000E-02
  STEP TIME COMPLETED       0.300    ,  TOTAL TIME COMPLETED         1.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     4 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -489,11 +734,11 @@
 
 
  AVERAGE FORCE                      2.455E-03   TIME AVG. FORCE       2.251E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.688E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.060E-04   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.174E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.188E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -502,11 +747,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  4.000E-02
  STEP TIME COMPLETED       0.400    ,  TOTAL TIME COMPLETED         1.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     5 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -521,11 +771,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.329E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -2.927E-18   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.306E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.175E-04   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.173E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.150E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -534,11 +784,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  5.000E-02
  STEP TIME COMPLETED       0.500    ,  TOTAL TIME COMPLETED         1.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     6 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -553,11 +808,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.417E-03
- LARGEST RESIDUAL FORCE             5.638E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -3.469E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.306E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.175E-04   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.060E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.975E-10   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -566,30 +821,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  6.000E-02
  STEP TIME COMPLETED       0.600    ,  TOTAL TIME COMPLETED         1.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     7 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.522E-03
- LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -1.735E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.688E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         1.060E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.172E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.150E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -598,30 +858,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  7.000E-02
  STEP TIME COMPLETED       0.700    ,  TOTAL TIME COMPLETED         1.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     8 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.629E-03
- LARGEST RESIDUAL FORCE             4.554E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE            -2.819E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.514E-07   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.         8.412E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.174E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.188E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -630,11 +895,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  8.000E-02
  STEP TIME COMPLETED       0.800    ,  TOTAL TIME COMPLETED         1.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT     9 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -649,11 +919,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.729E-03
- LARGEST RESIDUAL FORCE             3.036E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.898E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         5.401E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.616E-07   AT NODE          6   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.011E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -662,11 +932,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  9.000E-02
  STEP TIME COMPLETED       0.900    ,  TOTAL TIME COMPLETED         1.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    10 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -681,11 +956,11 @@
 
 
  AVERAGE FORCE                      3.578E-03   TIME AVG. FORCE       2.814E-03
- LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             6.017E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         9.988E-08   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         1.861E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.900E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.540E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -694,11 +969,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.100    
  STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         2.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    11 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -713,11 +993,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.879E-03
- LARGEST RESIDUAL FORCE             4.554E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -7.860E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -9.987E-08   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.985E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.997E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -7.846E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -726,30 +1006,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.110    
  STEP TIME COMPLETED        1.10    ,  TOTAL TIME COMPLETED         2.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    12 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.920E-03
- LARGEST RESIDUAL FORCE             6.939E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             7.047E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.898E-07   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.112E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.900E-07   AT NODE          6   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.286E-05   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -758,11 +1043,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.120    
  STEP TIME COMPLETED        1.20    ,  TOTAL TIME COMPLETED         2.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    13 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -777,11 +1067,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.938E-03
- LARGEST RESIDUAL FORCE            -6.830E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.514E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -7.962E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.616E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.850E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -790,11 +1080,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.130    
  STEP TIME COMPLETED        1.30    ,  TOTAL TIME COMPLETED         2.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    14 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -809,11 +1104,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.932E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.688E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.003E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.174E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.071E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -822,11 +1117,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.140    
  STEP TIME COMPLETED        1.40    ,  TOTAL TIME COMPLETED         2.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    15 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -841,11 +1141,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.913E-03
- LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.306E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.112E-04   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.173E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.089E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -854,11 +1154,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.150    
  STEP TIME COMPLETED        1.50    ,  TOTAL TIME COMPLETED         2.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    16 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -873,11 +1178,11 @@
 
 
  AVERAGE FORCE                      2.455E-03   TIME AVG. FORCE       2.884E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.306E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.112E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.590E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.805E-10   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -886,30 +1191,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.160    
  STEP TIME COMPLETED        1.60    ,  TOTAL TIME COMPLETED         2.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    17 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.849E-03
- LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.688E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.003E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.172E-08   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        1.089E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -918,11 +1228,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.170    
  STEP TIME COMPLETED        1.70    ,  TOTAL TIME COMPLETED         2.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    18 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -937,11 +1252,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.811E-03
- LARGEST RESIDUAL FORCE            -2.114E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.514E-07   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.        -7.962E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.174E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.071E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -950,11 +1265,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.180    
  STEP TIME COMPLETED        1.80    ,  TOTAL TIME COMPLETED         2.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    19 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -969,11 +1289,11 @@
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.774E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.898E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.112E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.616E-07   AT NODE          6   DOF  1
+ LARGEST CORRECTION TO DISP.        2.850E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -982,11 +1302,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.190    
  STEP TIME COMPLETED        1.90    ,  TOTAL TIME COMPLETED         2.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    20 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1001,11 +1326,11 @@
 
 
  AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       2.765E-03
- LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -9.988E-08   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.762E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.900E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        3.351E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1014,11 +1339,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.200    
  STEP TIME COMPLETED        2.00    ,  TOTAL TIME COMPLETED         3.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    21 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1033,11 +1363,11 @@
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.733E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             2.846E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         9.987E-08   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.         1.761E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.997E-07   AT NODE          6   DOF  1
+ LARGEST CORRECTION TO DISP.        3.523E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1046,11 +1376,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.210    
  STEP TIME COMPLETED        2.10    ,  TOTAL TIME COMPLETED         3.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    22 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1065,11 +1400,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.707E-03
- LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.898E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         5.112E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.900E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        3.351E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1078,11 +1413,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.220    
  STEP TIME COMPLETED        2.20    ,  TOTAL TIME COMPLETED         3.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    23 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1099,9 +1439,9 @@
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.689E-03
  LARGEST RESIDUAL FORCE            -4.093E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.514E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         7.962E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.616E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.850E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1110,11 +1450,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.230    
  STEP TIME COMPLETED        2.30    ,  TOTAL TIME COMPLETED         3.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    24 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1129,11 +1474,11 @@
 
 
  AVERAGE FORCE                      2.455E-03   TIME AVG. FORCE       2.679E-03
- LARGEST RESIDUAL FORCE            -7.562E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.688E-07   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.         1.003E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.174E-07   AT NODE          6   DOF  1
+ LARGEST CORRECTION TO DISP.        2.071E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1142,11 +1487,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.240    
  STEP TIME COMPLETED        2.40    ,  TOTAL TIME COMPLETED         3.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    25 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1161,11 +1511,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.678E-03
- LARGEST RESIDUAL FORCE            -4.012E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             4.906E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.306E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.112E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.173E-08   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.        1.089E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1174,11 +1524,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.250    
  STEP TIME COMPLETED        2.50    ,  TOTAL TIME COMPLETED         3.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    26 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1193,11 +1548,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.685E-03
- LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -3.361E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.306E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.112E-04   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.120E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.740E-10   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1206,11 +1561,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.260    
  STEP TIME COMPLETED        2.60    ,  TOTAL TIME COMPLETED         3.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    27 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1225,11 +1585,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.702E-03
- LARGEST RESIDUAL FORCE             7.535E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE            -2.602E-18   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.688E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.003E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.172E-08   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.089E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1238,18 +1598,23 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.270    
  STEP TIME COMPLETED        2.70    ,  TOTAL TIME COMPLETED         3.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    28 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
-       ELAPSED SYSTEM TIME (SEC)    =  0.10000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
        ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
@@ -1257,11 +1622,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.726E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             4.066E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.514E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         7.962E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.174E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.071E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1270,11 +1635,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.280    
  STEP TIME COMPLETED        2.80    ,  TOTAL TIME COMPLETED         3.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    29 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1289,11 +1659,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.754E-03
- LARGEST RESIDUAL FORCE             4.987E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.898E-07   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.         5.112E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.616E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.850E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1302,11 +1672,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.290    
  STEP TIME COMPLETED        2.90    ,  TOTAL TIME COMPLETED         3.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    30 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1321,11 +1696,11 @@
 
 
  AVERAGE FORCE                      3.578E-03   TIME AVG. FORCE       2.781E-03
- LARGEST RESIDUAL FORCE             1.171E-17   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             6.505E-18   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         9.988E-08   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.762E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.900E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.351E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1334,11 +1709,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.300    
  STEP TIME COMPLETED        3.00    ,  TOTAL TIME COMPLETED         4.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    31 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1353,11 +1733,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.805E-03
- LARGEST RESIDUAL FORCE            -6.722E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             3.795E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.451E-08   AT NODE          6   DOF  3
+ LARGEST INCREMENT OF DISP.        -4.324E-06   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.114E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.964E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1366,30 +1746,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.310    
  STEP TIME COMPLETED        3.10    ,  TOTAL TIME COMPLETED         4.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    32 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.823E-03
- LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             5.638E-18   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.965E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.230E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.932E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -5.171E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1398,11 +1783,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.320    
  STEP TIME COMPLETED        3.20    ,  TOTAL TIME COMPLETED         4.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    33 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1417,11 +1807,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.833E-03
- LARGEST RESIDUAL FORCE             2.602E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -7.562E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.619E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.653E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.916E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1430,11 +1820,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.330    
  STEP TIME COMPLETED        3.30    ,  TOTAL TIME COMPLETED         4.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    34 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1449,11 +1844,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.834E-03
- LARGEST RESIDUAL FORCE            -2.927E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE             2.846E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.820E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.027E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.201E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.119E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1462,11 +1857,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.340    
  STEP TIME COMPLETED        3.40    ,  TOTAL TIME COMPLETED         4.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    35 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1481,11 +1881,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.828E-03
- LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -5.584E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.452E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.138E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.316E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.114E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1494,30 +1894,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.350    
  STEP TIME COMPLETED        3.50    ,  TOTAL TIME COMPLETED         4.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    36 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.818E-03
- LARGEST RESIDUAL FORCE            -5.828E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.452E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.138E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.712E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -4.783E-10   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1526,11 +1931,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.360    
  STEP TIME COMPLETED        3.60    ,  TOTAL TIME COMPLETED         4.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    37 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1545,11 +1955,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.804E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -3.469E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.820E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.027E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.315E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        1.114E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1558,11 +1968,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.370    
  STEP TIME COMPLETED        3.70    ,  TOTAL TIME COMPLETED         4.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    38 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1577,11 +1992,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.787E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             2.846E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.619E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.201E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.119E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1590,11 +2005,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.380    
  STEP TIME COMPLETED        3.80    ,  TOTAL TIME COMPLETED         4.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    39 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1609,11 +2029,11 @@
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.769E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             1.111E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -2.966E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.231E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.653E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.916E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1622,11 +2042,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.390    
  STEP TIME COMPLETED        3.90    ,  TOTAL TIME COMPLETED         4.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    40 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1641,11 +2066,11 @@
 
 
  AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       2.765E-03
- LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.022E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.802E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.944E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.428E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1654,11 +2079,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.400    
  STEP TIME COMPLETED        4.00    ,  TOTAL TIME COMPLETED         5.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    41 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1667,17 +2097,17 @@
        ELAPSED USER TIME (SEC)      =   0.0000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
        ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
-       ELAPSED WALLCLOCK TIME (SEC) =          0
+       ELAPSED WALLCLOCK TIME (SEC) =          1
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.749E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -5.828E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.022E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.802E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.044E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        3.605E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1686,11 +2116,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.410    
  STEP TIME COMPLETED        4.10    ,  TOTAL TIME COMPLETED         5.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    42 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1705,11 +2140,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.735E-03
- LARGEST RESIDUAL FORCE            -7.318E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -1.084E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.965E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         5.230E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.944E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.428E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1718,11 +2153,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.420    
  STEP TIME COMPLETED        4.20    ,  TOTAL TIME COMPLETED         5.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    43 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1737,11 +2177,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.724E-03
- LARGEST RESIDUAL FORCE            -2.114E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             6.939E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.619E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         8.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.653E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.916E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1750,11 +2190,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.430    
  STEP TIME COMPLETED        4.30    ,  TOTAL TIME COMPLETED         5.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    44 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1769,11 +2214,11 @@
 
 
  AVERAGE FORCE                      2.455E-03   TIME AVG. FORCE       2.718E-03
- LARGEST RESIDUAL FORCE             6.559E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.820E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.027E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.201E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.119E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1782,11 +2227,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.440    
  STEP TIME COMPLETED        4.40    ,  TOTAL TIME COMPLETED         5.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    45 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1801,11 +2251,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.717E-03
- LARGEST RESIDUAL FORCE            -3.144E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.452E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.138E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.316E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.114E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1814,19 +2264,24 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.450    
  STEP TIME COMPLETED        4.50    ,  TOTAL TIME COMPLETED         5.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    46 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -1835,9 +2290,9 @@
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.720E-03
  LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.452E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.138E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        3.254E-12   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        5.739E-10   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1846,11 +2301,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.460    
  STEP TIME COMPLETED        4.60    ,  TOTAL TIME COMPLETED         5.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    47 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1865,11 +2325,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.729E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.740E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.820E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.027E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.315E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.114E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1878,11 +2338,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.470    
  STEP TIME COMPLETED        4.70    ,  TOTAL TIME COMPLETED         5.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    48 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1897,11 +2362,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.742E-03
- LARGEST RESIDUAL FORCE             4.770E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.619E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         8.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.201E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.119E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1910,11 +2375,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.480    
  STEP TIME COMPLETED        4.80    ,  TOTAL TIME COMPLETED         5.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    49 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1929,11 +2399,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.758E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             6.017E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         2.966E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         5.231E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.653E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.916E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1942,11 +2412,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.490    
  STEP TIME COMPLETED        4.90    ,  TOTAL TIME COMPLETED         5.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    50 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1961,11 +2436,11 @@
 
 
  AVERAGE FORCE                      3.578E-03   TIME AVG. FORCE       2.775E-03
- LARGEST RESIDUAL FORCE            -6.397E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE             3.686E-18   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.022E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.803E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.944E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.428E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1974,11 +2449,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.500    
  STEP TIME COMPLETED        5.00    ,  TOTAL TIME COMPLETED         6.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    51 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -1993,11 +2473,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.790E-03
- LARGEST RESIDUAL FORCE            -5.584E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -4.499E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.954E-08   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.739E-06   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.517E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.676E-05   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2006,11 +2486,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.510    
  STEP TIME COMPLETED        5.10    ,  TOTAL TIME COMPLETED         6.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    52 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2025,11 +2510,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.801E-03
- LARGEST RESIDUAL FORCE            -4.093E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -5.584E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.005E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.301E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.558E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -4.512E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2038,11 +2523,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.520    
  STEP TIME COMPLETED        5.20    ,  TOTAL TIME COMPLETED         6.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    53 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2057,11 +2547,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.807E-03
- LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -4.391E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.681E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.256E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.676E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.956E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2070,11 +2560,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.530    
  STEP TIME COMPLETED        5.30    ,  TOTAL TIME COMPLETED         6.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    54 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2089,11 +2584,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.808E-03
- LARGEST RESIDUAL FORCE            -6.939E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -6.017E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.899E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.040E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.217E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.147E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2102,11 +2597,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.540    
  STEP TIME COMPLETED        5.40    ,  TOTAL TIME COMPLETED         6.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    55 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2121,11 +2621,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.805E-03
- LARGEST RESIDUAL FORCE            -3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -6.939E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.539E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.153E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.401E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.129E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2134,11 +2634,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.550    
  STEP TIME COMPLETED        5.50    ,  TOTAL TIME COMPLETED         6.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    56 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2153,11 +2658,11 @@
 
 
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.799E-03
- LARGEST RESIDUAL FORCE            -4.391E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE            -7.318E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.539E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.153E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -3.847E-12   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -6.786E-10   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2166,11 +2671,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.560    
  STEP TIME COMPLETED        5.60    ,  TOTAL TIME COMPLETED         6.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    57 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2185,11 +2695,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.790E-03
- LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -2.656E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.899E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.040E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.400E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        1.129E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2198,11 +2708,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.570    
  STEP TIME COMPLETED        5.70    ,  TOTAL TIME COMPLETED         6.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    58 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2219,9 +2734,9 @@
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.779E-03
  LARGEST RESIDUAL FORCE             2.548E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.681E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.257E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.217E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.147E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2230,30 +2745,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.580    
  STEP TIME COMPLETED        5.80    ,  TOTAL TIME COMPLETED         6.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    59 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.768E-03
- LARGEST RESIDUAL FORCE            -5.828E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.006E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.301E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.676E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.955E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2262,11 +2782,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.590    
  STEP TIME COMPLETED        5.90    ,  TOTAL TIME COMPLETED         6.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    60 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2281,11 +2806,11 @@
 
 
  AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       2.765E-03
- LARGEST RESIDUAL FORCE             8.050E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.036E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.827E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.970E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.474E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2294,11 +2819,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.600    
  STEP TIME COMPLETED        6.00    ,  TOTAL TIME COMPLETED         7.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    61 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2313,11 +2843,11 @@
 
 
  AVERAGE FORCE                      2.101E-03   TIME AVG. FORCE       2.754E-03
- LARGEST RESIDUAL FORCE            -5.584E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.035E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.826E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.071E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        3.653E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2326,11 +2856,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.610    
  STEP TIME COMPLETED        6.10    ,  TOTAL TIME COMPLETED         7.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    62 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2339,17 +2874,17 @@
        ELAPSED USER TIME (SEC)      =   0.0000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
        ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
-       ELAPSED WALLCLOCK TIME (SEC) =          0
+       ELAPSED WALLCLOCK TIME (SEC) =          1
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.745E-03
- LARGEST RESIDUAL FORCE             2.846E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         3.005E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         5.301E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.970E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        3.474E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2358,11 +2893,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.620    
  STEP TIME COMPLETED        6.20    ,  TOTAL TIME COMPLETED         7.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    63 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2377,11 +2917,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.737E-03
- LARGEST RESIDUAL FORCE             1.735E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.681E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         8.256E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.676E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.956E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2390,11 +2930,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.630    
  STEP TIME COMPLETED        6.30    ,  TOTAL TIME COMPLETED         7.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    64 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2409,11 +2954,11 @@
 
 
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.733E-03
- LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.899E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.040E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.217E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2422,30 +2967,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.640    
  STEP TIME COMPLETED        6.40    ,  TOTAL TIME COMPLETED         7.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    65 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =  0.10000    
+       ELAPSED USER TIME (SEC)      =   0.0000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
+       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.732E-03
- LARGEST RESIDUAL FORCE             1.735E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.539E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.153E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.401E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        1.129E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2454,11 +3004,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.650    
  STEP TIME COMPLETED        6.50    ,  TOTAL TIME COMPLETED         7.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    66 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2473,11 +3028,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.733E-03
- LARGEST RESIDUAL FORCE             1.952E-18   AT NODE          1   DOF  1
+ LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.539E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.153E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        4.397E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        7.755E-10   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2486,11 +3041,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.660    
  STEP TIME COMPLETED        6.60    ,  TOTAL TIME COMPLETED         7.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    67 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2505,11 +3065,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.740E-03
- LARGEST RESIDUAL FORCE             5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.899E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.040E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.400E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.129E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2518,11 +3078,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.670    
  STEP TIME COMPLETED        6.70    ,  TOTAL TIME COMPLETED         7.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    68 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2537,11 +3102,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.749E-03
- LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE            -4.391E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.681E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         8.257E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.217E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.147E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2550,11 +3115,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.680    
  STEP TIME COMPLETED        6.80    ,  TOTAL TIME COMPLETED         7.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    69 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2569,11 +3139,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.760E-03
- LARGEST RESIDUAL FORCE            -8.240E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -6.505E-18   AT NODE          6   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         3.006E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         5.301E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.676E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.955E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2582,11 +3152,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.690    
  STEP TIME COMPLETED        6.90    ,  TOTAL TIME COMPLETED         7.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    70 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2601,11 +3176,11 @@
 
 
  AVERAGE FORCE                      3.578E-03   TIME AVG. FORCE       2.772E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -6.234E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.036E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.827E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.970E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.474E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2614,11 +3189,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.700    
  STEP TIME COMPLETED        7.00    ,  TOTAL TIME COMPLETED         8.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    71 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2633,11 +3213,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.783E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.576E-08   AT NODE          6   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.160E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.693E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.986E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2646,11 +3226,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.710    
  STEP TIME COMPLETED        7.10    ,  TOTAL TIME COMPLETED         8.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    72 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2665,11 +3250,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.791E-03
- LARGEST RESIDUAL FORCE            -3.036E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE             4.120E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.034E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.351E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.411E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -4.252E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2678,11 +3263,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.720    
  STEP TIME COMPLETED        7.20    ,  TOTAL TIME COMPLETED         8.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    73 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2697,11 +3287,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.796E-03
- LARGEST RESIDUAL FORCE             2.846E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -5.828E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.726E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.335E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.692E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.984E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2710,11 +3300,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.730    
  STEP TIME COMPLETED        7.30    ,  TOTAL TIME COMPLETED         8.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    74 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2729,11 +3324,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.797E-03
- LARGEST RESIDUAL FORCE            -3.253E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -4.093E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.955E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.050E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.229E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.168E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2742,11 +3337,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.740    
  STEP TIME COMPLETED        7.40    ,  TOTAL TIME COMPLETED         8.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    75 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2761,11 +3361,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.795E-03
- LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.601E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.164E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.462E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.140E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2774,11 +3374,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.750    
  STEP TIME COMPLETED        7.50    ,  TOTAL TIME COMPLETED         8.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    76 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2793,11 +3398,11 @@
 
 
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.790E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             5.204E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.601E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.164E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -4.994E-12   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -8.808E-10   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2806,30 +3411,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.760    
  STEP TIME COMPLETED        7.60    ,  TOTAL TIME COMPLETED         8.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    77 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.784E-03
- LARGEST RESIDUAL FORCE             3.090E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.955E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.050E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.461E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.140E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2838,11 +3448,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.770    
  STEP TIME COMPLETED        7.70    ,  TOTAL TIME COMPLETED         8.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    78 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2857,11 +3472,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.776E-03
- LARGEST RESIDUAL FORCE            -2.358E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE            -2.114E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.726E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.336E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.229E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.168E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2870,11 +3485,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.780    
  STEP TIME COMPLETED        7.80    ,  TOTAL TIME COMPLETED         8.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    79 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2889,11 +3509,11 @@
 
 
  AVERAGE FORCE                      2.102E-03   TIME AVG. FORCE       2.767E-03
- LARGEST RESIDUAL FORCE            -4.391E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE            -7.860E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.034E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.352E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.692E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.984E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2902,11 +3522,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.790    
  STEP TIME COMPLETED        7.90    ,  TOTAL TIME COMPLETED         8.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    80 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2921,11 +3546,11 @@
 
 
  AVERAGE FORCE                      2.602E-03   TIME AVG. FORCE       2.765E-03
- LARGEST RESIDUAL FORCE            -5.584E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -4.391E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.046E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.844E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.989E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.508E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2934,30 +3559,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.800    
  STEP TIME COMPLETED        8.00    ,  TOTAL TIME COMPLETED         9.00    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    81 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.102E-03   TIME AVG. FORCE       2.757E-03
- LARGEST RESIDUAL FORCE            -4.093E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.045E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.844E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.091E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        3.688E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2966,11 +3596,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.810    
  STEP TIME COMPLETED        8.10    ,  TOTAL TIME COMPLETED         9.10    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    82 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -2985,11 +3620,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.750E-03
- LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         3.034E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         5.351E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.989E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.508E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2998,11 +3633,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.820    
  STEP TIME COMPLETED        8.20    ,  TOTAL TIME COMPLETED         9.20    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    83 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3017,11 +3657,11 @@
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.744E-03
- LARGEST RESIDUAL FORCE            -1.103E-17   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.726E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         8.335E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.692E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.984E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3030,11 +3670,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.830    
  STEP TIME COMPLETED        8.30    ,  TOTAL TIME COMPLETED         9.30    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    84 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3049,11 +3694,11 @@
 
 
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.741E-03
- LARGEST RESIDUAL FORCE            -3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.955E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.050E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.229E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        2.168E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3062,11 +3707,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.840    
  STEP TIME COMPLETED        8.40    ,  TOTAL TIME COMPLETED         9.40    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    85 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3081,11 +3731,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.739E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             2.548E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.601E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.164E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.462E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.140E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3094,11 +3744,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.850    
  STEP TIME COMPLETED        8.50    ,  TOTAL TIME COMPLETED         9.50    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    86 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3113,11 +3768,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.741E-03
- LARGEST RESIDUAL FORCE            -1.735E-18   AT NODE          2   DOF  1
+ LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         6.601E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         1.164E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        5.549E-12   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        9.787E-10   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3126,11 +3781,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.860    
  STEP TIME COMPLETED        8.60    ,  TOTAL TIME COMPLETED         9.60    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    87 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3145,11 +3805,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.746E-03
- LARGEST RESIDUAL FORCE             3.469E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         5.955E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.050E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.461E-08   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.140E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3158,11 +3818,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.870    
  STEP TIME COMPLETED        8.70    ,  TOTAL TIME COMPLETED         9.70    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    88 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3177,11 +3842,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.753E-03
- LARGEST RESIDUAL FORCE             5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -8.023E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         4.726E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.         8.336E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.229E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.168E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3190,11 +3855,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.880    
  STEP TIME COMPLETED        8.80    ,  TOTAL TIME COMPLETED         9.80    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    89 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3209,11 +3879,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.761E-03
- LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE            -4.933E-18   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         3.034E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         5.352E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.692E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.984E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3222,11 +3892,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.890    
  STEP TIME COMPLETED        8.90    ,  TOTAL TIME COMPLETED         9.90    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    90 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3241,11 +3916,11 @@
 
 
  AVERAGE FORCE                      3.578E-03   TIME AVG. FORCE       2.771E-03
- LARGEST RESIDUAL FORCE            -5.638E-18   AT NODE          6   DOF  1
+ LARGEST RESIDUAL FORCE            -5.855E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.         1.046E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.         1.844E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.989E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.508E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3254,11 +3929,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.900    
  STEP TIME COMPLETED        9.00    ,  TOTAL TIME COMPLETED         10.0    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    91 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3273,11 +3953,11 @@
 
 
  AVERAGE FORCE                      3.527E-03   TIME AVG. FORCE       2.779E-03
- LARGEST RESIDUAL FORCE             4.581E-18   AT NODE          5   DOF  3
+ LARGEST RESIDUAL FORCE             3.686E-18   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -7.496E-08   AT NODE          5   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.322E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.795E-07   AT NODE          5   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.165E-05   AT NODE          5   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3286,11 +3966,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.910    
  STEP TIME COMPLETED        9.10    ,  TOTAL TIME COMPLETED         10.1    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    92 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3305,11 +3990,11 @@
 
 
  AVERAGE FORCE                      3.380E-03   TIME AVG. FORCE       2.785E-03
- LARGEST RESIDUAL FORCE            -7.860E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE             8.050E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.056E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.391E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -2.334E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -4.116E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3318,11 +4003,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.920    
  STEP TIME COMPLETED        9.20    ,  TOTAL TIME COMPLETED         10.2    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    93 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3337,11 +4027,11 @@
 
 
  AVERAGE FORCE                      3.150E-03   TIME AVG. FORCE       2.789E-03
- LARGEST RESIDUAL FORCE             4.825E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             6.315E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.761E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.397E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.704E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -3.006E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3350,11 +4040,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.930    
  STEP TIME COMPLETED        9.30    ,  TOTAL TIME COMPLETED         10.3    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    94 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3369,11 +4064,11 @@
 
 
  AVERAGE FORCE                      2.860E-03   TIME AVG. FORCE       2.790E-03
- LARGEST RESIDUAL FORCE            -2.656E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.999E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.058E-04   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -1.238E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -2.184E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3382,18 +4077,23 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.940    
  STEP TIME COMPLETED        9.40    ,  TOTAL TIME COMPLETED         10.4    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    95 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
-       ELAPSED SYSTEM TIME (SEC)    =  0.10000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
+       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
        ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
@@ -3401,11 +4101,11 @@
 
 
  AVERAGE FORCE                      2.641E-03   TIME AVG. FORCE       2.788E-03
- LARGEST RESIDUAL FORCE             2.927E-18   AT NODE          5   DOF  1
+ LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.650E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.173E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.510E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.148E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3414,11 +4114,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.950    
  STEP TIME COMPLETED        9.50    ,  TOTAL TIME COMPLETED         10.5    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    96 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3435,9 +4140,9 @@
  AVERAGE FORCE                      2.456E-03   TIME AVG. FORCE       2.785E-03
  LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -6.650E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.173E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.       -6.149E-12   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.       -1.084E-09   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3446,30 +4151,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.960    
  STEP TIME COMPLETED        9.60    ,  TOTAL TIME COMPLETED         10.6    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    97 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
        ELAPSED USER TIME (SEC)      =   0.0000    
-       ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED SYSTEM TIME (SEC)    =  0.10000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.288E-03   TIME AVG. FORCE       2.780E-03
- LARGEST RESIDUAL FORCE            -8.674E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE            -7.562E-18   AT NODE          5   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -5.999E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.058E-04   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        6.509E-08   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        1.148E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3478,11 +4188,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.970    
  STEP TIME COMPLETED        9.70    ,  TOTAL TIME COMPLETED         10.7    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    98 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3497,11 +4212,11 @@
 
 
  AVERAGE FORCE                      2.158E-03   TIME AVG. FORCE       2.774E-03
- LARGEST RESIDUAL FORCE            -3.849E-18   AT NODE          6   DOF  3
+ LARGEST RESIDUAL FORCE             2.548E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -4.761E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -8.397E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.238E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        2.184E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3510,11 +4225,16 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.980    
  STEP TIME COMPLETED        9.80    ,  TOTAL TIME COMPLETED         10.8    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT    99 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
+
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
 
      CHECK POINT   START OF SOLVER    
 
@@ -3529,11 +4249,11 @@
 
 
  AVERAGE FORCE                      2.102E-03   TIME AVG. FORCE       2.767E-03
- LARGEST RESIDUAL FORCE            -5.204E-18   AT NODE          2   DOF  3
+ LARGEST RESIDUAL FORCE             6.559E-18   AT NODE          6   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -3.057E-07   AT NODE          2   DOF  1
+ LARGEST INCREMENT OF DISP.        -5.391E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        1.704E-07   AT NODE          1   DOF  1
+ LARGEST CORRECTION TO DISP.        3.006E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3542,30 +4262,35 @@
 
  TIME INCREMENT COMPLETED  0.100    ,  FRACTION OF STEP COMPLETED  0.990    
  STEP TIME COMPLETED        9.90    ,  TOTAL TIME COMPLETED         10.9    
+  
+     ASYNCHRONOUS OUTPUT DATABASE FRAME FLUSH STARTED
+  
 
 
   INCREMENT   100 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT  0.100    
 
   NUMBER OF EQUATIONS =        24     NUMBER OF FLOATING PT. OPERATIONS =  4.90E+03
 
+  USING THE DIRECT SOLVER WITH   2 PROCESSORS
+
      CHECK POINT   START OF SOLVER    
 
      CHECK POINT  END OF SOLVER       
 
-       ELAPSED USER TIME (SEC)      =   0.0000    
+       ELAPSED USER TIME (SEC)      =  0.10000    
        ELAPSED SYSTEM TIME (SEC)    =   0.0000    
-       ELAPSED TOTAL CPU TIME (SEC) =   0.0000    
+       ELAPSED TOTAL CPU TIME (SEC) =  0.10000    
        ELAPSED WALLCLOCK TIME (SEC) =          0
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.603E-03   TIME AVG. FORCE       2.765E-03
- LARGEST RESIDUAL FORCE             6.017E-18   AT NODE          1   DOF  3
+ LARGEST RESIDUAL FORCE             4.283E-18   AT NODE          1   DOF  3
    INSTANCE: PART-1-1                                                                        
- LARGEST INCREMENT OF DISP.        -1.053E-07   AT NODE          1   DOF  1
+ LARGEST INCREMENT OF DISP.        -1.858E-05   AT NODE          1   DOF  1
    INSTANCE: PART-1-1                                                                        
- LARGEST CORRECTION TO DISP.        2.003E-07   AT NODE          2   DOF  1
+ LARGEST CORRECTION TO DISP.        3.533E-05   AT NODE          2   DOF  1
    INSTANCE: PART-1-1                                                                        
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3583,9 +4308,9 @@
      ANALYSIS SUMMARY:
      TOTAL OF        106  INCREMENTS
                        0  CUTBACKS IN AUTOMATIC INCREMENTATION
-                     106  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
-                     106  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
-                     106  INVOLVE MATRIX DECOMPOSITION, INCLUDING
+                     112  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
+                     112  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
+                     112  INVOLVE MATRIX DECOMPOSITION, INCLUDING
                        0  DECOMPOSITION(S) OF THE MASS MATRIX
                        1  REORDERING OF EQUATIONS TO MINIMIZE WAVEFRONT
                        0  ADDITIONAL RESIDUAL EVALUATIONS FOR LINE SEARCHES
@@ -3599,7 +4324,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =   1.1000    
-       SYSTEM TIME (SEC)    =   1.9000    
-       TOTAL CPU TIME (SEC) =   3.0000    
-       WALLCLOCK TIME (SEC) =         30
+       USER TIME (SEC)      =   15.400    
+       SYSTEM TIME (SEC)    =   16.000    
+       TOTAL CPU TIME (SEC) =   31.400    
+       WALLCLOCK TIME (SEC) =         41

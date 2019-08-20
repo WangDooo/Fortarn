@@ -34,51 +34,59 @@
       
       
       ! 我的 
-      parameter (k_soil = 560.0)
-      parameter (Pa=100.0)
-      parameter (Pi = 3.1415926)
-      parameter (lambda_soil = 0.6)
-      parameter (phi_soil = 0.658)
-      parameter (b1 = 0.18)
-      parameter (b2 = 0.43)
-      parameter (c = 0.5)
+      real, parameter :: k_soil = 560.0
+      real, parameter :: Pa=100.0
+      real, parameter :: Pi = 3.1415926
+      real, parameter :: lambda_soil = 0.6
+      real, parameter :: phi_soil = 0.658
+      real, parameter :: b1 = 0.18
+      real, parameter :: b2 = 0.43
+      real, parameter :: c = 0.5
       real, parameter :: increment = 0.1 ! 分析步的固定 increment size
       real, parameter :: T_cyc = 2.0          ! 加载周期
       integer :: N_cyc
-      real :: inc_a
-      real :: inc_b
+      real :: inc_a, inc_b
       real :: N_decay
+      real :: E_0, E_1
+      real :: Sigma_m_0, Sigma_1_0, Sigma_1_sf_0, Sigma_3_0
+      real :: X_0_init, re_N, X_n, X_0, E_1_init, E_sn, X_c
+      real :: E_init = 80000
+
        
       character(len=10) :: str
       real :: value
       !str = 'inc_a'
-      !      value = real(inc_a)
-      !    call WriteValue(str,value)
+      !value = real(inc_a)
+      !call WriteValue(str,value)
       
       if (kstep .eq. 1) then
          ! 计算E1存放在 statev(1)
         ! 获取 S11 S22 S33   因为土体单元是受压为负 s11=simga3 为负
-              CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 
+		if (Time(1).lt.0.2) then 
+			statev(1) = E_init
+			Field(1) = E_init
+		else
+                      CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 
      1        MATLAYO,LACCFLA) 
-              S11 = array(1) 
-              S22 = array(2)
-              S33 = array(3)
-              ! 根据简布公式计算E
-              Sigma_m_0 = abs(S11 + S22 + S33) / 3.0
-              E_0 = k_soil  * pa * (Sigma_m_0/pa) ** lamdba_soil
-              STATEV(1) = E_0 ! 这个E_0 是初始刚度
-              statev(3) = E_0
-              FIELD(1) = E_0
+                      S11 = array(1) 
+                      S22 = array(2)
+                      S33 = array(3)
+                      ! 根据简布公式计算E
+                      Sigma_m_0 = abs(S11 + S22 + S33) / 3.0
+                      E_0 = k_soil  * pa * (Sigma_m_0/pa) ** lambda_soil
+                      STATEV(1) = E_0 ! 这个E_0 是初始刚度
+                      statev(3) = E_0
+                      FIELD(1) = E_0
           
-              ! 计算 X_0 存放在statev(2)
-              Sigma_1_0 = abs(S33)
-              Sigma_3_0 = abs(S11 + S22) / 2.0
-              Sigma_1_sf_0 = ((1+sin(phi_soil))*Sigma_3_0+
+                      ! 计算 X_0 存放在statev(2)
+                      Sigma_1_0 = abs(S33)
+                      Sigma_3_0 = abs(S11 + S22) / 2.0
+                      Sigma_1_sf_0 = ((1+sin(phi_soil))*Sigma_3_0+
      1                          2*c*cos(phi_soil)) / (1-sin(phi_soil)) 
-              X_0_init = Sigma_1_0 / Sigma_1_sf_0
-              STATEV(2) = X_0_init
-          
-          ! 进入第二个分析步 循环加载分析步
+                      X_0_init = Sigma_1_0 / Sigma_1_sf_0
+                      STATEV(2) = X_0_init
+              end if
+! 进入第二个分析步 循环加载分析步
       else if (kstep .eq. 2) then      
               ! 初始刚度
               FIELD(1) = STATEV(1)
@@ -96,9 +104,9 @@
               ! 计算N_cyc
               N_cyc = ceiling(Time(1) / T_cyc) !  向上取整 ceiling
               re_N = mod(Time(1) , T_cyc)     ! 在周期循环中的位置
-              str = 'Time(1)'
-              value = real(Time(1))
-              call WriteValue(str,value)
+              !str = 'Time(1)'
+              !value = real(Time(1))
+              !call WriteValue(str,value)
         
               ! 记录E_1 即第一次循环下的切线模量
               if (N_cyc .le. 1) then ! <=
@@ -107,9 +115,9 @@
                       end if
                       if ( re_N .ge. inc_a .AND. re_N .lt. inc_b) then ! inc_a<=re_N < inc_b
                               Sigma_m = abs(S11 + S22 + S33) / 3.0
-                              E_1 = k_soil*pa*(Sigma_m/pa)** lamdba_soil
+                              E_1 = k_soil*pa*(Sigma_m/pa)** lambda_soil
                               STATEV(1) = E_1 ! 这个E_1 是第一次循环的切线刚度
-                              statev(3) = E_1
+                              statev(3) = E_1   ! statev(3)为循环步存储E
                               FIELD(1) = E_1
                       end if 
                       if (re_N .ge. inc_b) then   ! >
@@ -125,15 +133,15 @@
                       if ( re_N .ge. inc_a .AND. re_N .lt. inc_b) then
                        ! 计算X_n
                               
-                              str = 'S11'
-                              value = real(S11)
-                              call WriteValue(str,value)
-                              str = 'S22'
-                              value = real(S22)
-                              call WriteValue(str,value)
-                              str = 'S33'
-                              value = real(S33)
-                              call WriteValue(str,value)
+                              !str = 'S11'
+                              !value = real(S11)
+                              !call WriteValue(str,value)
+                              !str = 'S22'
+                              !value = real(S22)
+                              !call WriteValue(str,value)
+                              !str = 'S33'
+                              !value = real(S33)
+                              !call WriteValue(str,value)
 
 
                               Sigma_1_n =abs(S33)
@@ -143,40 +151,32 @@
 
                               X_n = Sigma_1_n / Sigma_1_sf_n
 
-                              str = 'X_n'
-                              value = real(X_n)
-                              call WriteValue(str,value)
+                              !str = 'X_n'
+                              !value = real(X_n)
+                              !call WriteValue(str,value)
 
                               X_0 = statev(2)
 
-                              str = 'X_0'
-                              value = real(X_0)
-                              call WriteValue(str,value)
+                              !str = 'X_0'
+                              !value = real(X_0)
+                              !call WriteValue(str,value)
 
                               X_c = abs((X_n-X_0)/(1-X_0))
                               
-                              str = 'X_c'
-                              value = real(X_c)
-                              call WriteValue(str,value)
+                              !str = 'X_c'
+                              !value = real(X_c)
+                              !call WriteValue(str,value)
 
                               N_decay = real(N_cyc)**(-1*b1*(X_c**b2))
                               
-                              str = 'N_decay'
-                              value = real(N_decay)
-                              call WriteValue(str,value)
+                              !str = 'N_decay'
+                              !value = real(N_decay)
+                              !call WriteValue(str,value)
 
                               E_1_init = statev(1)
 
-                              str = 'E_1_init'
-                              value = real(E_1_init)
-                              call WriteValue(str,value)
-
                               E_sn = E_1_init * N_decay
                               
-                              str = 'E_sn'
-                              value = real(E_sn)
-                              call WriteValue(str,value)
-
                               Field(1) = E_sn
                               statev(3) = E_sn
                       end if

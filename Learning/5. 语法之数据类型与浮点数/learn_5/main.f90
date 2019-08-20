@@ -11,6 +11,17 @@ program main
     real, parameter :: T_cyc = 2.0
     real, parameter :: inc = 0.1
     
+      real,parameter :: k_soil = 560.0
+      real,parameter :: pa=100.0
+      real,parameter :: lambda_soil = 1.0
+      real :: Sigma_m_0 
+      real :: E_0
+        
+      character(len=10) :: str
+      real :: value
+
+
+
     !integer :: i
     !do i =1, 20
     !    write(*,*) i, Selected_Int_Kind(i)
@@ -49,4 +60,9 @@ program main
     write(*,*) remainder
     write(*,*) N
     write(*,*) (T_cyc - inc) / 2.0
+    
+    Sigma_m_0 = 423.366
+
+    E_0 = k_soil  * pa * (Sigma_m_0/pa) ** lambda_soil
+   write(*,*) E_0
 end program main

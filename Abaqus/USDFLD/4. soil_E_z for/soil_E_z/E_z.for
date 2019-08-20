@@ -10,15 +10,43 @@
      1 TIME(2) 
       DIMENSION ARRAY(15),JARRAY(15),JMAC(*),JMATYP(*),COORD(*)
       
+
+      real, parameter :: k_soil = 560.0
+      real, parameter :: pa=100.0
+      real, parameter :: lambda_soil = 0.6
+      real :: Sigma_m_0 
+      real :: E_0
+
+
+
       character(len=10) :: str
       real :: value
       
       if (CMNAME(1:4) .eq. 'MAT1') then
-          E_now = 10000.0*TAN(38.0/180.0*3.1415)*
+           if (kstep .le. 1) then
+              E_0 = 10000.0*TAN(38.0/180.0*3.1415)*
      1    sqrt(9.5*(40.0-coord(3)))
-          STATEV(1) =E_now
-          Field(1) = E_now
-
+             !         CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 
+             !1        MATLAYO,LACCFLA) 
+             !         S11 = array(1) 
+             !         S22 = array(2)
+             !         S33 = array(3)
+             !         ! 根据简布公式计算E
+             !         Sigma_m_0 = abs(S11 + S22 + S33) / 3.0
+             !         !str = 'Sigma_m_0'
+             !         !value = real(Sigma_m_0)
+             !         !call WriteValue(str,value)
+             !         E_0 = k_soil  * pa * (Sigma_m_0/pa) ** lambda_soil 
+             !
+             !         STATEV(1) = S11
+             !         STATEV(2) = S22
+             !         STATEV(3) = S33
+             !         STATEV(4) = Sigma_m_0
+                      statev(1) = E_0
+                      Field(1) = E_0
+              else if (kstep .gt. 1) then
+                      Field(1) = statev(1)
+              end if
 
       else if (CMNAME(1:4) .eq. 'MAT2') then
           CALL GETVRM('S',ARRAY,JARRAY,FLGRAY,JRCD,JMAC,JMATYP, 

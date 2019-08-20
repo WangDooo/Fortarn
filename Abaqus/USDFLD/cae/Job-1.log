@@ -2,10 +2,10 @@ Analysis initiated from SIMULIA established products
 Abaqus JOB Job-1
 Abaqus 3DEXPERIENCE R2017x
 Abaqus License Manager checked out the following licenses:
-Abaqus/Standard checked out 5 tokens from Flexnet server DESKTOP-403292K.
-<1019 out of 1024 licenses remain available>.
+Abaqus/Standard checked out 10 tokens from Flexnet server DESKTOP-403292K.
+<1014 out of 1024 licenses remain available>.
 Begin Compiling Abaqus/Standard User Subroutines
-2019/8/14 17:31:47
+2019/8/15 14:49:00
 Intel(R) Visual Fortran Intel(R) 64 Compiler XE for applications running on Intel(R) 64, Version 14.0.1.139 Build 20131008
 Copyright (C) 1985-2013 Intel Corporation.  All rights reserved.
 
@@ -13,20 +13,24 @@ End Compiling Abaqus/Standard User Subroutines
 Begin Linking Abaqus/Standard User Subroutines
    正在创建库 standardU.lib 和对象 standardU.exp
 End Linking Abaqus/Standard User Subroutines
-2019/8/14 17:31:47
+2019/8/15 14:49:00
 Begin Analysis Input File Processor
-2019/8/14 17:31:47
+2019/8/15 14:49:00
 Run pre.exe
-2019/8/14 17:31:50
+2019/8/15 14:49:04
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-2019/8/14 17:31:50
+2019/8/15 14:49:04
 Run standard.exe
-2019/8/14 17:32:24
+WARNING: cannot load the GPU solver library: 
+WARNING: GPU Acceleration Disabled
+WARNING: cannot load the GPU solver library: 
+WARNING: GPU Acceleration Disabled
+2019/8/15 14:49:50
 End Abaqus/Standard Analysis
 Begin MFS->SFS and SIM cleanup
-2019/8/14 17:32:25
+2019/8/15 14:49:50
 Run SMASimUtility.exe
-2019/8/14 17:32:25
+2019/8/15 14:49:50
 End MFS->SFS and SIM cleanup
 Abaqus JOB Job-1 COMPLETED

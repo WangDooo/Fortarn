@@ -1,0 +1,204 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2017 replay file
+# Internal Version: 2016_09_28-05.54.59 126836
+# Run by WangDoo on Thu Aug 15 14:37:07 2019
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=238.520309448242, 
+    height=73.5212936401367)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('test-write.cae')
+#: The model database "D:\Coding\Github\Fortarn\Abaqus\USDFLD\cae\test-write.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['Model-1'].parts['Part-1']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+mdb.jobs['Job-1'].setValues(multiprocessingMode=THREADS, numCpus=2, 
+    numDomains=2, numGPUs=4)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       5
+#: Number of Node Sets:          5
+#: Number of Steps:              2
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.51278, 
+    farPlane=4.75807, width=2.81419, height=1.17915, cameraPosition=(3.45769, 
+    1.50446, 2.43069), cameraUpVector=(-0.5964, 0.789112, -0.147), 
+    cameraTarget=(0.512707, 0.468735, 0.523011))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.55247, 
+    farPlane=4.72479, width=2.85864, height=1.19778, cameraPosition=(2.72178, 
+    -0.0882224, 3.38122), cameraUpVector=(-0.282453, 0.959103, -0.0184983), 
+    cameraTarget=(0.517386, 0.478861, 0.516967))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.55707, 
+    farPlane=4.69634, width=2.86379, height=1.19994, cameraPosition=(2.17671, 
+    1.09009, 3.71823), cameraUpVector=(-0.371965, 0.858149, -0.353867), 
+    cameraTarget=(0.520368, 0.472414, 0.515123))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV2', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV3', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.56121, 
+    farPlane=4.67898, width=2.86843, height=1.20188, cameraPosition=(1.53521, 
+    1.48783, 3.87945), cameraUpVector=(-0.437199, 0.77019, -0.464397), 
+    cameraTarget=(0.525998, 0.468923, 0.513708))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.56796, 
+    farPlane=4.72461, width=2.87599, height=1.20505, cameraPosition=(3.70872, 
+    -0.553656, 1.95445), cameraUpVector=(-0.581311, 0.369348, 0.725024), 
+    cameraTarget=(0.502918, 0.490601, 0.53415))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.68841, 
+    farPlane=4.61451, width=3.01089, height=1.26157, cameraPosition=(3.87113, 
+    -0.926513, 0.695196), cameraUpVector=(-0.31876, 0.205023, 0.925396), 
+    cameraTarget=(0.502372, 0.491854, 0.538382))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.60992, 
+    farPlane=4.71147, width=2.92299, height=1.22474, cameraPosition=(2.26859, 
+    -2.65658, -0.0454653), cameraUpVector=(-0.318119, 0.0330254, 0.947476), 
+    cameraTarget=(0.505477, 0.495206, 0.539817))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.70784, 
+    farPlane=4.61258, width=3.03266, height=1.2707, cameraPosition=(1.01747, 
+    -3.04033, 1.3303), cameraUpVector=(-0.0634761, 0.525286, 0.848555), 
+    cameraTarget=(0.504739, 0.494979, 0.540629))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.6316, 
+    farPlane=4.68954, width=2.94728, height=1.23492, cameraPosition=(2.16875, 
+    -2.73238, 0.0917915), cameraUpVector=(-0.152754, 0.163757, 0.974602), 
+    cameraTarget=(0.505267, 0.49512, 0.540061))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=1, frame=35 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.48501, 
+    farPlane=4.85386, width=2.78311, height=1.16613, cameraPosition=(-1.38056, 
+    -1.97278, -1.37449), cameraUpVector=(-0.121519, -0.173361, 0.977333), 
+    cameraTarget=(0.522053, 0.491528, 0.546995))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.58496, 
+    farPlane=4.76115, width=2.89506, height=1.21304, cameraPosition=(-1.01775, 
+    -2.66078, -0.492691), cameraUpVector=(0.0593874, 0.0279162, 0.997845), 
+    cameraTarget=(0.523131, 0.489484, 0.549615))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.7441, 
+    farPlane=4.58608, width=3.07329, height=1.28772, cameraPosition=(1.03245, 
+    -3.10394, 0.0685315), cameraUpVector=(0.233255, 0.245477, 0.940921), 
+    cameraTarget=(0.531239, 0.487732, 0.551834))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.72386, 
+    farPlane=4.60606, width=3.05062, height=1.27822, cameraPosition=(1.61205, 
+    -3.00766, 0.556173), cameraUpVector=(0.261058, 0.430372, 0.864077), 
+    cameraTarget=(0.532275, 0.487904, 0.552706))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.63462, 
+    farPlane=4.7283, width=2.95068, height=1.23634, cameraPosition=(-0.589405, 
+    -2.90315, 1.35089), cameraUpVector=(0.164756, 0.504444, 0.84758), 
+    cameraTarget=(0.528418, 0.488087, 0.554098))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=2.70286, 
+    farPlane=4.63051, width=3.0271, height=1.26837, cameraPosition=(1.27458, 
+    -3.05717, 0.0135182), cameraUpVector=(0.039812, 0.205484, 0.97785), 
+    cameraTarget=(0.540026, 0.487128, 0.545769))
+a = mdb.models['Model-1'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+#: The job input file "Job-1.inp" has been submitted for analysis.
+#: Job Job-1: Analysis Input File Processor completed successfully.
+#: Job Job-1: Abaqus/Standard completed successfully.
+#: Job Job-1 completed successfully. 
+o3 = session.openOdb(
+    name='D:/Coding/Github/Fortarn/Abaqus/USDFLD/cae/Job-1.odb')
+#: Model: D:/Coding/Github/Fortarn/Abaqus/USDFLD/cae/Job-1.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       5
+#: Number of Node Sets:          5
+#: Number of Steps:              2
+session.viewports['Viewport: 1'].setValues(displayedObject=o3)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='FV1', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+mdb.save()
+#: The model database has been saved to "D:\Coding\Github\Fortarn\Abaqus\USDFLD\cae\test-write.cae".
